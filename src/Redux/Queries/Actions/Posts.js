@@ -12,7 +12,9 @@ import axios from "axios";
 
 export const getPosts = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("http://localhost:4000/api/post/getPosts");
+    const { data } = await axios.get(
+      "https://jorjer.herokuapp.com/api/post/getPosts"
+    );
     console.log("getting all posts");
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
@@ -23,7 +25,7 @@ export const getPosts = () => async (dispatch) => {
 export const getUserPosts = (id) => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/post/getUserPosts/${id}`
+      `https://jorjer.herokuapp.com/api/post/getUserPosts/${id}`
     );
     console.log("getting user posts");
 
@@ -36,7 +38,7 @@ export const getUserPosts = (id) => async (dispatch) => {
 export const getPost = (postId) => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/post/getPost/${postId}`
+      `https://jorjer.herokuapp.com/api/post/getPost/${postId}`
     );
     dispatch({ type: GET_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -56,7 +58,7 @@ export const addImage = (formData) => async (dispatch) => {
   };
   try {
     const { data } = await axios.post(
-      "http://localhost:4000/api/post/addImage",
+      "https://jorjer.herokuapp.com/api/post/addImage",
       formData,
       config
     );
@@ -80,7 +82,7 @@ export const addPost = (formData) => async (dispatch) => {
 
   try {
     const { data } = await axios.post(
-      "http://localhost:4000/api/post/addPost",
+      "https://jorjer.herokuapp.com/api/post/addPost",
       formData,
       config
     );
@@ -104,7 +106,7 @@ export const updatePost = (id, post) => async (dispatch) => {
   };
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/post/updatePost/${id}`,
+      `https://jorjer.herokuapp.com/api/post/updatePost/${id}`,
       config,
       post
     );
@@ -129,7 +131,7 @@ export const deletePost = (id) => async (dispatch) => {
   };
   try {
     await axios.delete(
-      `http://localhost:4000/api/post/deletePost/${id}`,
+      `https://jorjer.herokuapp.com/api/post/deletePost/${id}`,
       config
     );
 

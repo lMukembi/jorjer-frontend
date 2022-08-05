@@ -11,12 +11,15 @@ import axios from "axios";
 // Signup User
 export const signup = (formData) => async (dispatch) => {
   try {
-    const { data } = await axios.post("http://localhost:4000/api/user/signup", {
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-      phone: formData.phone,
-    });
+    const { data } = await axios.post(
+      "https://jorjer.herokuapp.com/api/user/signup",
+      {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+      }
+    );
     dispatch({ type: SIGNUP_SUCCESS, payload: data });
     localStorage.setItem("userAccount", JSON.stringify(data));
     window.location.reload(false);
@@ -28,10 +31,13 @@ export const signup = (formData) => async (dispatch) => {
 // Login User
 export const login = (formData) => async (dispatch) => {
   try {
-    const { data } = await axios.post("http://localhost:4000/api/user/login", {
-      email: formData.email,
-      password: formData.password,
-    });
+    const { data } = await axios.post(
+      "https://jorjer.herokuapp.com/api/user/login",
+      {
+        email: formData.email,
+        password: formData.password,
+      }
+    );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data });
     localStorage.setItem("userAccount", JSON.stringify(data));
@@ -56,7 +62,7 @@ export const editUser = (id, editForm) => async (dispatch) => {
   };
   try {
     const { data } = await axios.put(
-      `http://localhost:4000/api/auth/editUser/${id}`,
+      `https://jorjer.herokuapp.com/api/auth/editUser/${id}`,
       config,
       {
         editForm,
@@ -84,7 +90,7 @@ export const getUser = (id) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/auth/${id}`,
+      `https://jorjer.herokuapp.com/api/auth/${id}`,
       config
     );
 
