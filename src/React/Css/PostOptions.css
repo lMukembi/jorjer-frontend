@@ -1,0 +1,20 @@
+.pstsc {
+  position: absolute;
+  bottom: 0rem;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+  z-index: 10;
+  border-radius: 10px;
+  width: 380px;
+  left: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+}
+
+.pstsc li {
+  margin: 0.7rem auto 0.7rem auto;
+  outline: 1px solid rgb(219, 216, 216);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.2rem;
+}

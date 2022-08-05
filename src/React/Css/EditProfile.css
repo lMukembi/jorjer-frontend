@@ -1,0 +1,69 @@
+.edit-profile {
+  position: fixed;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background-color: white;
+  padding: 0.7rem 0.4rem;
+  right: 0.25rem;
+  left: 0.25rem;
+  border-radius: 6px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.textArea {
+  border: 1px solid rgb(204, 199, 199);
+  background-color: transparent;
+  outline: none;
+  padding: 0.27rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  resize: none;
+}
+
+.editInput {
+  height: 2rem;
+  border: 1px solid rgb(204, 199, 199);
+  padding-left: 0.3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.editButton {
+  background-color: rgb(55, 136, 184);
+  border: none;
+  color: white;
+  align-items: center;
+  text-align: center;
+  margin: 1rem auto auto auto;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+  .edit-profile {
+    width: 524px;
+    height: 400px;
+    margin: 7rem auto auto auto;
+    z-index: 6;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .edit-profile {
+    position: fixed;
+    width: 524px;
+    height: 400px;
+    margin: 7rem auto auto auto;
+    z-index: 6;
+  }
+}

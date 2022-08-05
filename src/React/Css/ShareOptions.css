@@ -1,0 +1,44 @@
+.ss {
+  position: fixed;
+  background-color: white;
+  outline: 1px solid rgb(187, 183, 183);
+  border-radius: 5px;
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  top: 3rem;
+  bottom: 3rem;
+  left: 28rem;
+  right: 28rem;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.ss li {
+  margin: 0.7rem auto 0.7rem auto;
+  outline: 1px solid rgb(219, 216, 216);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .ss {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    left: 600px;
+    top: 5rem;
+    right: 16rem;
+    z-index: 6;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ss {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+  }
+}

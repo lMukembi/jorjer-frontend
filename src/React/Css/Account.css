@@ -1,0 +1,63 @@
+.account-container {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  position: relative;
+  z-index: 7;
+}
+
+.vclose {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  left: 0rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .account-container {
+    margin: auto 1rem auto 500px;
+    width: 524px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .account-container {
+    margin-top: 8.5rem;
+    width: 680px;
+  }
+}
+
+.user-bar {
+  align-items: center;
+}
+
+.user-bar .avatar {
+  height: 60px;
+  width: 60px;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 0.7rem auto auto 0.3rem;
+}
+
+.uad {
+  border-bottom: "2px solid blue";
+  background-color: whitesmoke;
+  margin: auto auto 0.2rem 4.5rem;
+  border-radius: 4px;
+  padding: 0.3rem;
+}
+
+.edit-button {
+  background-color: rgb(230, 225, 225);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem;
+  color: rgb(55, 136, 184);
+  text-align: center;
+}
+
+.activity-message {
+  padding: 1rem 0.1rem 0.1rem 0.4rem;
+}

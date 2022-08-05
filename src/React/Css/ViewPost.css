@@ -1,0 +1,222 @@
+.vpost {
+  position: relative;
+  top: 7rem;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.4rem;
+  width: 380px;
+  z-index: 6;
+}
+
+.vpost h3 {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.puser {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+}
+
+.pavatar {
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-right: 0.7rem;
+}
+
+.pdetails {
+  box-shadow: rgba(0, 0, 0, 0.35) 10px 50px 36px -28px inset;
+  padding: 10px;
+}
+
+.vclose {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  left: 0rem;
+  z-index: 5;
+}
+
+.vpimage {
+  border-radius: 10px;
+  margin-top: 1rem;
+  width: 370px;
+  height: 250px;
+  object-fit: contain;
+}
+
+.bc {
+  margin: auto;
+  padding-left: 10px;
+  padding-top: 2rem;
+  padding-right: 10px;
+  border-radius: 10px;
+  padding-bottom: 2rem;
+  width: 350px;
+}
+
+.pd p {
+  align-items: "center";
+  box-shadow: rgb(55, 135, 185) 0px 0px 0px 1px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: auto;
+  padding-right: auto;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.pd .pde {
+  color: rgb(55, 135, 185);
+  padding-left: 5rem;
+  padding-right: 5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.bc p {
+  align-items: center;
+}
+
+.pd ol {
+  margin-top: 1rem;
+}
+
+.bc ol li {
+  margin-bottom: 5px;
+}
+
+.bc button {
+  background-color: white;
+  box-shadow: rgb(55, 135, 185) 0px 0px 0px 1px;
+  border-radius: 10px;
+  padding: 5px;
+  color: rgb(55, 135, 185);
+  cursor: pointer;
+}
+
+.pcontainer .bc {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+}
+
+.bc h4 {
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+p:last-child {
+  margin-top: 0.2rem;
+}
+p span {
+  padding-right: 0.3rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .vpost {
+    width: 900px;
+    height: 500px;
+    margin: 2rem auto auto auto;
+    z-index: 6;
+  }
+
+  .pcontainer {
+    margin: 0.8rem auto 0.8rem auto;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    position: relative;
+  }
+
+  .puser {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+  }
+
+  .pstds p {
+    margin: 1rem auto 1rem 0.8rem;
+  }
+
+  .pavatar {
+    height: 30px;
+    width: 30px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-right: 0.7rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .vpost {
+    margin: 2rem 1rem auto 250px;
+    position: fixed;
+    left: 15rem;
+    right: 18rem;
+    top: 5.5rem;
+    width: 700px;
+    height: 500px;
+    z-index: 6;
+  }
+
+  .pcontainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+  }
+
+  .pcontainer .bc {
+    margin: 0rem 0rem auto auto;
+    padding-left: 10px;
+    padding-top: 2rem;
+    padding-right: 10px;
+    border-radius: 10px;
+    padding-bottom: 2rem;
+    width: 360px;
+  }
+
+  .pcontainer .vpimage {
+    margin: 0rem 0rem auto auto;
+    border-radius: 5px;
+    object-fit: contain;
+    width: 300px;
+    height: 200px;
+  }
+
+  .pcontainer .pdetails {
+    padding-left: 1rem;
+    border-radius: 5px;
+  }
+
+  .puser {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+  }
+
+  .pstds p {
+    margin: 1rem auto 1rem 0.8rem;
+  }
+
+  .pavatar {
+    height: 30px;
+    width: 30px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-right: 0.7rem;
+  }
+}

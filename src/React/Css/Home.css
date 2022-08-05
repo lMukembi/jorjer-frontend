@@ -1,0 +1,55 @@
+.home {
+  width: 99%;
+  position: absolute;
+  margin: auto;
+}
+
+.home .header {
+  box-shadow: rgb(55, 135, 185) 0px 1px 0px,
+    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  padding-left: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.home hr {
+  width: 100%;
+}
+
+.askbtn {
+  height: 40px;
+  width: 40px;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgb(55, 135, 185);
+  margin: 0.7rem;
+  position: fixed;
+  bottom: 4rem;
+  right: 0;
+}
+
+.plus {
+  color: white;
+  font-size: "40px";
+}
+
+.home-feeds {
+  padding: 0.2rem;
+  margin-top: 8rem;
+  min-width: 300px;
+}
+
+@media screen and (min-width: 1024px) {
+  .home-feeds {
+    width: 770px;
+    margin: 8rem auto auto 447.5px;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .home-feeds {
+    width: 770px;
+    margin: 8rem auto auto 447.5px;
+    position: relative;
+  }
+}

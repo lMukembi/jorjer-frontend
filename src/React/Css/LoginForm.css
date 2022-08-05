@@ -1,0 +1,232 @@
+.login-form {
+  width: 90%;
+  margin: 10rem auto auto auto;
+  overflow: hidden;
+}
+
+.signup-form {
+  width: 90%;
+  margin: 2rem auto auto auto;
+  overflow: hidden;
+}
+
+.pinfo {
+  color: rgb(55, 135, 185);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+@media screen and (min-width: 1200px) {
+  .login-form {
+    width: 30%;
+    position: absolute;
+    right: 18rem;
+    margin: 3em auto 3em auto;
+  }
+
+  .signup-form {
+    width: 30%;
+    position: absolute;
+    right: 18rem;
+    margin: 3em auto 3em auto;
+  }
+
+  .brief-info {
+    position: relative;
+    text-align: center;
+    top: 10rem;
+    left: 5rem;
+  }
+
+  .brief-info h1 {
+    position: fixed;
+    margin-bottom: 2rem;
+    font-weight: 850;
+    font-size: 60px;
+    color: rgb(55, 135, 185);
+  }
+
+  .brief-info p {
+    position: absolute;
+    font-weight: 400;
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login-form {
+    width: 30%;
+    margin: 8em auto 3em auto;
+  }
+
+  .signup-form {
+    width: 30%;
+    position: absolute;
+    right: 18rem;
+    margin: 5em auto 3em auto;
+  }
+
+  .brief-info {
+    position: relative;
+    top: 10rem;
+    left: 15rem;
+  }
+
+  .brief-info h1 {
+    position: fixed;
+    text-align: center;
+    font-weight: 850;
+    font-size: 60px;
+    left: 20rem;
+    color: rgb(55, 136, 184);
+  }
+
+  .brief-info p {
+    position: absolute;
+    font-weight: 400;
+    font-size: 25px;
+    top: 5rem;
+  }
+}
+
+.form-logo {
+  justify-content: center;
+  margin: 3em auto 3em auto;
+}
+
+.form-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0 0.25em;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.login-credentials {
+  position: relative;
+  height: 40px;
+  margin-bottom: 1rem;
+  overflow: visible;
+}
+
+.form-input input {
+  display: block;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #000;
+  margin: 0.5em 0;
+  width: 100%;
+}
+
+.form-input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 0.5em;
+  line-height: 1.3rem;
+  padding: 0.5em 1em;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+.form-input:focus + .form-label {
+  top: -0.5rem;
+  left: 0.8rem;
+  color: rgb(55, 136, 184);
+  font-size: 0.9rem;
+  background-color: #fff;
+  font-weight: 600;
+  z-index: 10;
+}
+.form-input:not(:placeholder-shown).form-input:not(:focus) + .form-label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.form-input:focus {
+  border: 2px solid rgb(55, 136, 184);
+}
+
+.login-primary-btn {
+  width: 100%;
+}
+
+.login-primary-btn button {
+  background-color: rgb(55, 136, 184);
+  border: none;
+  border-radius: 4px;
+  padding: 0.6em 0.3em;
+  color: rgb(8, 8, 8);
+  width: 20%;
+  height: 30%;
+  text-align: center;
+}
+
+.login-primary-btn,
+.sign-up-secondary-btn {
+  padding: 0.7em 1rem;
+  height: 2.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.login-primary-btn {
+  border: 0;
+  background-color: rgb(55, 136, 184);
+  color: rgb(255, 255, 255);
+}
+
+.login-primary-btn:hover {
+  background-color: rgb(55, 136, 184);
+}
+.or {
+  font-weight: 300;
+}
+
+.sign-up-secondary-btn {
+  color: rgb(15, 15, 15);
+}
+
+.or hr {
+  flex: auto;
+  border: none;
+  height: 1px;
+  background-color: rgb(94, 91, 91);
+}
+.or span {
+  padding: 0.5em;
+}
+
+.or,
+.sign-up-secondary-btn {
+  width: 80%;
+  margin: 0.5rem auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+i {
+  cursor: pointer;
+  position: absolute;
+  top: 34%;
+  z-index: 2;
+  right: 7%;
+}

@@ -1,0 +1,40 @@
+.more-options {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  padding: 0.3rem;
+  background-color: white;
+  border-radius: 4px;
+  position: absolute;
+  top: 1.5rem;
+  right: 3rem;
+  z-index: 5;
+}
+
+.more-options ul {
+  flex-direction: column;
+}
+
+.more-options li {
+  background-color: whitesmoke;
+  margin: 0.5rem auto 0.5rem auto;
+  white-space: nowrap;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  width: 99.9%;
+  display: flex;
+}
+
+.more-options small {
+  margin: auto auto auto 0.2rem;
+  font-size: small;
+}
+
+.mclose {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.4);
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  left: 0rem;
+  z-index: 4;
+}

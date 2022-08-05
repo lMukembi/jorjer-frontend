@@ -1,0 +1,32 @@
+.desktop-sidebar {
+  background-color: whitesmoke;
+  padding: 0rem 0rem 0rem 1rem;
+  margin: 5rem 0.3rem auto auto;
+  border-radius: 7px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0.25rem;
+  z-index: 10;
+  width: 230px;
+}
+
+.desktop-sidebar span {
+  margin-left: 0.4rem;
+}
+
+.desktop-sidebar li {
+  margin: 1rem auto auto auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .desktop-sidebar {
+    width: 280px;
+    border-radius: 7px;
+    left: 10rem;
+  }
+
+  .desktop-sidebar span {
+    margin-left: 0.8rem;
+  }
+}

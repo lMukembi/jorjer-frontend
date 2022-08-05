@@ -1,0 +1,243 @@
+.top-bar {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 8;
+  width: 99%;
+}
+
+.top-header {
+  padding: 0.5rem;
+  text-align: center;
+  margin: 0rem 0rem 0.2rem 0rem;
+}
+
+.logo-bar {
+  margin: 0.4rem 0.4rem 0.4rem auto;
+  align-items: center;
+  width: 99%;
+}
+
+.lga {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+}
+
+.lga span {
+  margin-left: 0.1rem;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  text-align: center;
+}
+
+.search-form {
+  box-shadow: rgb(180, 201, 186) 0px 1px 3px 0px,
+    rgb(55, 135, 185) 0px 0px 0px 1.5px;
+  border-radius: 5rem;
+  background-color: white;
+  margin: auto;
+  padding: 0.33rem 0.7rem;
+  width: 200px;
+}
+
+.login {
+  position: fixed;
+  top: 0.5rem;
+  background-color: rgb(55, 135, 185);
+  border: none;
+  border-radius: 4px;
+  padding: auto;
+  right: 9rem;
+  cursor: pointer;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+  cursor: pointer;
+  padding: 0.01rem;
+}
+
+.user-handle {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: fixed;
+  color: black;
+  top: 0.5rem;
+  right: 10rem;
+}
+
+.scrolled {
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-width: 100%;
+  min-height: 6vh;
+  margin: auto;
+}
+
+.popular-tags {
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  padding: 0.2rem;
+  text-align: center;
+  margin: auto 0rem 0.2rem 0rem;
+  background-color: white;
+  position: fixed;
+  z-index: 3;
+  width: 98%;
+}
+
+.av {
+  margin-right: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .top-bar .line {
+    border-top: 1px solid rgb(242, 242, 242);
+    width: 99%;
+    margin: auto;
+  }
+
+  .popular-tags {
+    width: 1010px;
+    margin: auto auto auto 310px;
+    box-shadow: rgba(51, 58, 70, 0.1) 0px 10px 10px -10px;
+  }
+
+  .rt {
+    white-space: nowrap;
+    position: fixed;
+    width: 310px;
+    height: 52px;
+    background-color: white;
+    padding: 0.8rem;
+  }
+
+  .search-form {
+    margin: auto auto auto 4.5rem;
+    width: 350px;
+    height: 1.7rem;
+    font-size: 15px;
+  }
+
+  .search-icon {
+    top: 0.4rem;
+  }
+
+  .user-handle {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: fixed;
+    color: black;
+    top: 0.5rem;
+    right: 10rem;
+  }
+
+  .ptl {
+    padding: 0.17rem;
+  }
+
+  .ptl li {
+    margin: 0rem 0.6rem 0rem 0.6rem;
+  }
+
+  .av {
+    margin-right: 0rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .search-form {
+    margin: auto auto auto 7.5rem;
+    width: 450px;
+    height: 1.8rem;
+    font-size: 17px;
+  }
+
+  .top-bar {
+    width: 80%;
+    margin: auto;
+  }
+
+  .top-bar .line {
+    border-top: 1px solid rgb(242, 242, 242);
+    width: 99%;
+    margin: auto;
+  }
+
+  .popular-tags {
+    width: 770px;
+    margin: auto auto auto 310px;
+    box-shadow: rgba(51, 58, 70, 0.1) 0px 10px 10px -10px;
+  }
+
+  .search-icon {
+    top: 0.3rem;
+  }
+
+  .user-handle {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: auto 0.8rem auto auto;
+    top: 0.5rem;
+    right: 10rem;
+    position: fixed;
+  }
+}
+
+.ptl {
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: 0.12rem;
+}
+
+.ptl li {
+  margin: 0rem 0.4rem 0rem 0.4rem;
+  box-shadow: rgba(180, 179, 179, 0.02) 0px 1px 3px 0px,
+    rgba(141, 139, 139, 0.15) 0px 0px 0px 2px;
+  border-radius: 15px;
+  padding: 0.3rem;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.ptl::-webkit-scrollbar {
+  display: none;
+}
+
+.left {
+  position: absolute;
+  background-color: white;
+  padding: 0.35rem;
+  border-radius: 50%;
+  left: 0;
+  top: 0.35rem;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.right {
+  position: absolute;
+  background-color: white;
+  padding: 0.35rem;
+  border-radius: 50%;
+  right: 0;
+  top: 0.35rem;
+  z-index: 3;
+  cursor: pointer;
+}
