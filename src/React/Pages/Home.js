@@ -63,20 +63,19 @@ function Home() {
 
       <div className="home-feeds">
         <p className="header">
-          <span style={{ fontSize: "25px" }}>Trending</span>
-          <span>
-            "Want to
+          <span style={{ fontSize: "22px" }}>Trending</span>
+          <span style={{ fontSize: "13px" }}>
+            Want to
             <small
               style={{
                 color: "rgb(55, 135, 185)",
-                fontWeight: "550",
                 marginLeft: "0.2rem",
                 marginRight: "0.2rem",
               }}
             >
               {randomText}
             </small>
-            a social media account?"
+            a social media account?
           </span>
         </p>
         <div>

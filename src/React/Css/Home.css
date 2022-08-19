@@ -1,7 +1,8 @@
 .home {
   width: 99%;
   position: absolute;
-  margin: auto;
+  overflow-y: auto;
+  /* margin: auto; */
 }
 
 .home .header {

@@ -5,7 +5,6 @@ import { BsGrid } from "react-icons/bs";
 import { CgMediaLive } from "react-icons/cg";
 import { IoIosPeople } from "react-icons/io";
 import Avatar from "../Components/Avatar.png";
-import { IoAlertCircleOutline } from "react-icons/io5";
 import JORJER from "../Components/JORJER.png";
 import "../Css/PostCard.css";
 
@@ -93,7 +92,7 @@ function PostCard({ post }) {
                 {post.audienceType}
               </span>
             </p>
-            <p style={flexline}>{post.content}</p>
+            <p style={{ whiteSpace: "pre-wrap" }}>{post.content}</p>
             {window.outerWidth < 1023 && (
               <p>
                 <button
