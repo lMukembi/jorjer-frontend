@@ -72,7 +72,7 @@ function EditProfile(props) {
     };
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/auth/editUser/${id}`,
+        `https://jorjer.herokuapp.com/api/auth/editUser/${id}`,
         { username, email, phone },
         config
       );

@@ -14,10 +14,8 @@
 
 .post-image img {
   width: 180px;
-  /* height: 300px; */
   object-fit: contain;
   outline: none;
-  /* border-radius: 10px; */
 }
 
 .post-details {
@@ -83,7 +81,8 @@ p span {
   }
 
   .post-image img {
-    width: 100%;
+    width: 300px;
+    object-fit: contain;
     height: 300px;
     outline: none;
     border-radius: 10px;

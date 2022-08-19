@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Css/Home.css";
 import Loader from "../Components/Loader";
@@ -28,18 +28,16 @@ function Home() {
   const [randomText, setRandomText] = useState();
 
   const Texts = ["monetize", "sell", "hire", "buy"];
-  const changeText = () => {
+  const changeText = useCallback(() => {
     let randomItem = Texts[Math.floor(Math.random() * Texts.length)];
     setRandomText(randomItem);
-  };
-  const startTimer = () => {
-    setInterval(changeText, 3000);
-  };
+  }, []);
 
   useEffect(() => {
-    startTimer();
     dispatch(getPosts());
-  }, [location.key]);
+    let text = setInterval(changeText, 2000);
+    return () => clearInterval(text);
+  }, [location.key, changeText]);
 
   useEffect(() => {
     setData(posts);
@@ -70,7 +68,8 @@ function Home() {
             "Want to
             <small
               style={{
-                color: "blue",
+                color: "rgb(55, 135, 185)",
+                fontWeight: "550",
                 marginLeft: "0.2rem",
                 marginRight: "0.2rem",
               }}

@@ -106,7 +106,7 @@ function ViewPost(props) {
           <div>
             {post.file ? (
               <img
-                src={`http://localhost:4000/static/${post.file}`}
+                src={`https://jorjer.herokuapp.com/static/${post.file}`}
                 alt={post.author}
                 className="vpimage"
               />

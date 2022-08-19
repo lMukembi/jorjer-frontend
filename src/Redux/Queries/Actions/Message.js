@@ -15,7 +15,7 @@ export const addMessage =
     };
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/message/createMessage",
+        "https://jorjer.herokuapp.com/api/message/createMessage",
         { ...messageForm },
         { headers }
       );
@@ -29,7 +29,7 @@ export const addMessage =
 export const getMessages = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      " http://localhost:4000/api/message/getMessages"
+      " https://jorjer.herokuapp.com/api/message/getMessages"
     );
 
     dispatch({ type: GET_MESSAGES, payload: data });
@@ -41,7 +41,7 @@ export const getMessages = () => async (dispatch) => {
 export const deleteMessage = (messageId) => async (dispatch) => {
   try {
     const { data } = await axios.delete(
-      `http://localhost:4000/message/${messageId}/deleteMessage`
+      `https://jorjer.herokuapp.com/message/${messageId}/deleteMessage`
     );
 
     dispatch({ type: DELETE_MESSAGE_SUCCESS, payload: data });

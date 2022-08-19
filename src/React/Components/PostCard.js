@@ -27,7 +27,7 @@ function PostCard({ post }) {
         <div className="post-image">
           {post.file ? (
             <img
-              src={`http://localhost:4000/static/${post.file}`}
+              src={`https://jorjer.herokuapp.com/static/${post.file}`}
               alt={post.author}
               style={{ borderRadius: "10px" }}
             />
@@ -38,10 +38,7 @@ function PostCard({ post }) {
 
         <div className="post-details">
           <p className="pst-user">
-            <Link
-              to={`/account/${post.author}`}
-              className="link align-center flex-row margin-bottom"
-            >
+            <Link className="link align-center flex-row margin-bottom">
               {post.avatar ? (
                 <img
                   className="pc-avatar"

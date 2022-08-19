@@ -188,12 +188,12 @@
 
 .login-primary-btn {
   border: 0;
-  background-color: rgb(55, 136, 184);
+  background-color: rgb(55, 135, 185);
   color: rgb(255, 255, 255);
 }
 
 .login-primary-btn:hover {
-  background-color: rgb(55, 136, 184);
+  background-color: rgb(55, 135, 185);
 }
 .or {
   font-weight: 300;
@@ -221,6 +221,7 @@
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  color: rgb(55, 135, 185);
 }
 
 i {

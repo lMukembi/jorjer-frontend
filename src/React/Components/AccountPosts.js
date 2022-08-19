@@ -14,7 +14,7 @@ function AccountPosts() {
   const getUserPosts = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/post/getUserPosts/${id}`
+        `https://jorjer.herokuapp.com/api/post/getUserPosts/${id}`
       );
 
       dispatch({ type: GET_USER_POSTS_SUCCESS, payload: data });

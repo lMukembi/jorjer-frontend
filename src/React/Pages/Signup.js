@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../Css/LoginForm.css";
 import { useDispatch } from "react-redux";
 import { signup } from "../../Redux/Queries/Actions/Auth";
@@ -34,17 +34,15 @@ function AuthForm() {
   const [randomText, setRandomText] = useState();
 
   const Texts = ["monetize", "sell", "hire", "buy"];
-  const changeText = () => {
+  const changeText = useCallback(() => {
     let randomItem = Texts[Math.floor(Math.random() * Texts.length)];
     setRandomText(randomItem);
-  };
-  const startTimer = () => {
-    setInterval(changeText, 3000);
-  };
+  }, []);
 
   useEffect(() => {
-    startTimer();
-  }, []);
+    let text = setInterval(changeText, 2000);
+    return () => clearInterval(text);
+  }, [changeText]);
 
   return (
     <div>
@@ -56,7 +54,8 @@ function AuthForm() {
               Want to
               <span
                 style={{
-                  color: "blue",
+                  color: "rgb(55, 135, 185)",
+                  fontWeight: "550",
                   fontSize: "25px",
                   marginLeft: "0.5rem",
                 }}
