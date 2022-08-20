@@ -50,13 +50,13 @@ function AuthForm() {
         <div>
           <div className="brief-info">
             <h1>JorJer</h1>
-            <p>
+            <p style={{ fontSize: "20px" }}>
               Want to
               <span
                 style={{
                   color: "rgb(55, 135, 185)",
                   fontWeight: "550",
-                  fontSize: "25px",
+                  fontSize: "20px",
                   marginLeft: "0.5rem",
                 }}
               >
@@ -81,7 +81,6 @@ function AuthForm() {
                 setFormData({ ...formData, username: e.target.value })
               }
               className="form-input"
-              autoComplete="off"
             />
           </div>
           <div className="login-credentials">
@@ -94,7 +93,6 @@ function AuthForm() {
                 setFormData({ ...formData, email: e.target.value })
               }
               className="form-input"
-              autoComplete="off"
             />
           </div>
           <div className="login-credentials">
@@ -107,7 +105,6 @@ function AuthForm() {
                 setFormData({ ...formData, phone: e.target.value })
               }
               className="form-input"
-              autoComplete="off"
             />
           </div>
           <div className="login-credentials">
@@ -120,7 +117,6 @@ function AuthForm() {
               }
               value={formData.password}
               className="form-input"
-              autoComplete="off"
             />
             <i onClick={handleShowPassword}>
               {showPassword ? <MdVisibility /> : <MdVisibilityOff />}
@@ -137,7 +133,6 @@ function AuthForm() {
                 setFormData({ ...formData, confirmPassword: e.target.value })
               }
               className="form-input"
-              autoComplete="off"
             />
           </div>
 

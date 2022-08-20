@@ -3,9 +3,8 @@ import "../Css/EditProfile.css";
 import { BsImages } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { editUser } from "../../Redux/Queries/Actions/Auth";
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Avatar from "../Components/Avatar.png";
 import { EDIT_USER } from "../../Redux/Queries/Constants/Users";
 import axios from "axios";
@@ -19,7 +18,8 @@ function EditProfile(props) {
   const [editForm, setEditForm] = useState({
     username: "",
     bio: "",
-    file: "",
+    phone: "",
+    email: "",
   });
 
   const onChange = (val) => setEditForm({ ...editForm, file: val.name });
@@ -32,35 +32,24 @@ function EditProfile(props) {
     onChange(e.target.files[0]);
   };
 
-  console.log(editForm);
-
-  // const token = userData.data;
-
-  const submitEditForm = (e) => {
-    e.preventDefault();
-    if (id) {
-      dispatch(editUser(id, editForm));
-      console.log(editForm, "qwerty");
-    }
-
-    // props.close(false);
-  };
-
   useEffect(() => {
     if (postImage) {
       setImageUrl(URL.createObjectURL(postImage));
     }
   }, [postImage]);
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [bio, setBio] = useState("");
-
   const data = localStorage.getItem("userAccount");
   const token = JSON.parse(data);
   const updateUser = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("postImage", postImage);
+    formData.append("username", editForm.username);
+    formData.append("email", editForm.email);
+    formData.append("phone", editForm.phone);
+    formData.append("bio", editForm.bio);
 
     const headers = {
       "Content-Type": "application/json",
@@ -73,7 +62,7 @@ function EditProfile(props) {
     try {
       const { data } = await axios.put(
         `https://jorjer.herokuapp.com/api/auth/editUser/${id}`,
-        { username, email, phone },
+        formData,
         config
       );
 
@@ -84,10 +73,7 @@ function EditProfile(props) {
   };
 
   useEffect(() => {
-    setUsername(token.result.username);
-    setEmail(token.result.email);
-    setPhone(token.result.phone);
-    setBio(token.result.bio);
+    setEditForm({});
   }, []);
 
   return (
@@ -98,7 +84,7 @@ function EditProfile(props) {
             className="close-button"
             onClick={() => props.close(false)}
             style={{
-              color: "rgb(55, 136, 184)",
+              color: "rgb(55, 135, 185)",
               cursor: "pointer",
               fontSize: "30px",
               marginLeft: "0.45rem",
@@ -142,7 +128,7 @@ function EditProfile(props) {
                       <AiFillCloseCircle
                         onClick={() => setPostImage(!postImage)}
                         style={{
-                          color: "rgb(55, 136, 184)",
+                          color: "rgb(55, 135, 185)",
                           cursor: "pointer",
                         }}
                       />
@@ -192,7 +178,7 @@ function EditProfile(props) {
           type="text"
           name="name"
           className="editInput"
-          value={username}
+          value={token.result.username}
           placeholder="Username"
           autoComplete="off"
           onChange={(e) =>
@@ -204,7 +190,7 @@ function EditProfile(props) {
           type="text"
           name="name"
           className="editInput"
-          value={email}
+          value={token.result.email}
           placeholder="Email"
           autoComplete="off"
           onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
@@ -214,7 +200,7 @@ function EditProfile(props) {
           type="text"
           name="name"
           className="editInput"
-          value={phone}
+          value={token.result.phone}
           placeholder="phone"
           autoComplete="off"
           onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
@@ -226,7 +212,7 @@ function EditProfile(props) {
           type="text"
           name="bio"
           placeholder="Describe yourself here..."
-          value={bio}
+          value={token.result.bio}
           onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
         ></textarea>
 

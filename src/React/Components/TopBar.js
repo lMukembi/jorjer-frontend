@@ -86,7 +86,7 @@ const TopBar = ({ platformFilter }) => {
               src={Jorjer}
             />
           </span>
-          <span style={{ fontSize: "24px" }}>JorJer</span>
+          <span style={{ fontSize: "20px" }}>JorJer</span>
           <sup style={{ marginLeft: "0.1rem", fontSize: "8px" }}>KE</sup>
         </li>
         <li className="search">

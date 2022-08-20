@@ -397,7 +397,7 @@ function WritePost({ close, value }) {
                           <AiFillCloseCircle
                             onClick={() => setPostImage(!postImage)}
                             style={{
-                              color: "rgb(55, 136, 184)",
+                              color: "rgb(55, 135, 185)",
                               cursor: "pointer",
                             }}
                           />

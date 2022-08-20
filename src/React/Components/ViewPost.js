@@ -115,34 +115,29 @@ function ViewPost(props) {
             )}
             <div className="pdetails">
               <p className="puser">
-                <Link
-                  to={`/account/${post.author}`}
-                  className="link align-center flex-row margin-bottom"
-                >
-                  {post.avatar ? (
-                    <img
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "50%",
-                        marginRight: "0.5rem",
-                      }}
-                      src={post.avatar}
-                      alt={post.author}
-                    />
-                  ) : (
-                    <img
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "50%",
-                        marginRight: "0.5rem",
-                      }}
-                      src={Avatar}
-                      alt={post.author}
-                    />
-                  )}
-                </Link>
+                {post.avatar ? (
+                  <img
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      borderRadius: "50%",
+                      marginRight: "0.5rem",
+                    }}
+                    src={post.avatar}
+                    alt={post.author}
+                  />
+                ) : (
+                  <img
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      borderRadius: "50%",
+                      marginRight: "0.5rem",
+                    }}
+                    src={Avatar}
+                    alt={post.author}
+                  />
+                )}
                 <span>
                   {post && post.author.length > 10
                     ? post.author.substring(0, 10) + "..."
@@ -181,10 +176,14 @@ function ViewPost(props) {
                         marginRight: "5px",
                       }}
                     />
-                    {post.followersCount}
-                  </div>
-                  <div style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
-                    {post.audienceType}
+                    <span>
+                      <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                        {post.followersCount}
+                      </small>
+                      <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                        {post.audienceType}
+                      </small>
+                    </span>
                   </div>
                 </p>
                 <p style={flexline}>{post.content}</p>
@@ -193,7 +192,7 @@ function ViewPost(props) {
           </div>
           <div className="bc">
             <div className="pd">
-              <h4>Contact details for {post.author}</h4>
+              <h4>Contact {post.author} using these details.</h4>
               <p className="pde">
                 <MdEmail style={{ marginRight: "5px", color: "black" }} />
                 {post.email}
@@ -204,6 +203,8 @@ function ViewPost(props) {
                   color: "white",
                   display: "flex",
                   flexDirection: "row",
+                  paddingTop: "0.3rem",
+                  paddingBottom: "0.3rem",
                   paddingLeft: "6rem",
                   paddingRight: "6rem",
                 }}
@@ -211,28 +212,13 @@ function ViewPost(props) {
                 <IoCall style={{ marginRight: "5px", color: "black" }} />
                 {post.phone}
               </p>
-              <h4 style={{ marginTop: "1rem" }}>Check this notice!</h4>
-              <ol style={{ padding: "1rem" }}>
-                <li>
-                  Inspect the social media account and ensure it's exactly what
-                  you're looking for.
-                </li>
-                <li>We are not responsible for any scam.</li>
-                <li>Don't pay in advance.</li>
+              <h4>Check this notice!</h4>
+              <ol className="notice">
+                <li>Review the social media account up to satisfaction.</li>
+                <li>Be careful of scammers.</li>
+                <li>Never pay in advance.</li>
               </ol>
             </div>
-            <p>
-              <button
-                type="button"
-                style={{ width: "98%" }}
-                onClick={() => setPostOptions(!postOptions)}
-              >
-                Add post like this
-              </button>
-              {window.innerWidth > 1023 && postOptions && (
-                <ShareOptions close={setPostOptions} />
-              )}
-            </p>
           </div>
         </div>
       </div>

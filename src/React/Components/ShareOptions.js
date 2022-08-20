@@ -67,7 +67,7 @@ const ShareOptions = (props) => {
         </li>
         {addJob && (
           <WritePost
-            value="Apply Job"
+            value="Get Job"
             addJob={addJob}
             setCurrent={setCurrent}
             close={setAddJob}

@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import "../Css/Account.css";
 import { SinceInitialTime } from "../Components/SinceInitialTime";
-import { IoChevronBackCircle, IoCalendarOutline } from "react-icons/io5";
+import { IoChevronBackCircle } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import EditProfile from "../../React/Components/EditProfile";
-import AccountPosts from "../Components/AccountPosts";
 import { getUser } from "../../Redux/Queries/Actions/Users";
 import Logout from "../Components/Logout";
 import Avatar from "../Components/Avatar.png";
-import axios from "axios";
-import { GET_USER_POSTS_SUCCESS } from "../../Redux/Queries/Constants/Posts";
 import PostCard from "../Components/PostCard";
 import { getUserPosts } from "../../Redux/Queries/Actions/Posts";
 

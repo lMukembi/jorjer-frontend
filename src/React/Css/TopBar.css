@@ -43,7 +43,8 @@
   background-color: white;
   margin: auto;
   padding: 0.33rem 0.7rem;
-  width: 200px;
+  width: 180px;
+  font-size: 13px;
 }
 
 .login {

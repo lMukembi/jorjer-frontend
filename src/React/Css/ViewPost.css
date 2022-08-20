@@ -79,6 +79,8 @@
   color: rgb(55, 135, 185);
   padding-left: 5rem;
   padding-right: 5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   display: flex;
   flex-direction: row;
 }
@@ -108,10 +110,14 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
 }
 
-.bc h4 {
+.pd h4 {
   text-align: center;
   white-space: nowrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.pd .notice{
+  padding-left: 1rem;
 }
 
 p {
@@ -123,6 +129,11 @@ p:last-child {
 p span {
   padding-right: 0.3rem;
 }
+
+.pstds p {
+  margin: 1rem auto 0rem 0.8rem;
+}
+
 
 @media screen and (min-width: 1200px) {
   .vpost {

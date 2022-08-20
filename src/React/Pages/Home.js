@@ -15,7 +15,6 @@ function Home() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { posts, loading } = useSelector((state) => state.Posts);
-  const [current, setCurrent] = useState(null);
   const [data, setData] = useState([]);
 
   const platformFilter = (platItem) => {
@@ -35,6 +34,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPosts());
+    // setData(posts);
     let text = setInterval(changeText, 2000);
     return () => clearInterval(text);
   }, [location.key, changeText]);
@@ -57,9 +57,7 @@ function Home() {
 
       <div className="vll" />
 
-      {window.innerWidth < 1024 && (
-        <MobileBar setCurrent={setCurrent} data={data} setData={setData} />
-      )}
+      {window.innerWidth < 1024 && <MobileBar data={data} setData={setData} />}
 
       <div className="home-feeds">
         <p className="header">
@@ -71,6 +69,8 @@ function Home() {
                 color: "rgb(55, 135, 185)",
                 marginLeft: "0.2rem",
                 marginRight: "0.2rem",
+                fontSize: "13px",
+                fontWeight: "700px",
               }}
             >
               {randomText}

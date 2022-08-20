@@ -37,17 +37,11 @@ function PostCard({ post }) {
 
         <div className="post-details">
           <p className="pst-user">
-            <Link className="link align-center flex-row margin-bottom">
-              {post.avatar ? (
-                <img
-                  className="pc-avatar"
-                  src={post.avatar}
-                  alt={post.author}
-                />
-              ) : (
-                <img className="pc-avatar" src={Avatar} alt={post.author} />
-              )}
-            </Link>
+            {post.avatar ? (
+              <img className="pc-avatar" src={post.avatar} alt={post.author} />
+            ) : (
+              <img className="pc-avatar" src={Avatar} alt={post.author} />
+            )}
             <span>
               {post && post.author.length > 10
                 ? post.author.substring(0, 10) + "..."
@@ -87,9 +81,13 @@ function PostCard({ post }) {
                 }}
               />
 
-              {post.followersCount}
-              <span style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
-                {post.audienceType}
+              <span>
+                <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                  {post.followersCount}
+                </small>
+                <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                  {post.audienceType}
+                </small>
               </span>
             </p>
             <p style={{ whiteSpace: "pre-wrap" }}>{post.content}</p>
