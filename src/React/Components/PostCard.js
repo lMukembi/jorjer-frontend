@@ -26,7 +26,7 @@ function PostCard({ post }) {
         <div className="post-image">
           {post.file ? (
             <img
-              src={`https://jorjer.herokuapp.com/static/${post.file}`}
+              src={`https://drive.google.com/uc?export=view&id=${post.file}`}
               alt={post.author}
               style={{ borderRadius: "10px" }}
             />

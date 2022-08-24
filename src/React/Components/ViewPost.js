@@ -14,7 +14,6 @@ import { IoChevronBackCircle, IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import Avatar from "../Components/Avatar.png";
 import JORJER from "../Components/JORJER.png";
-import ShareOptions from "./ShareOptions";
 
 function ViewPost(props) {
   const dispatch = useDispatch();
@@ -106,7 +105,7 @@ function ViewPost(props) {
           <div>
             {post.file ? (
               <img
-                src={`https://jorjer.herokuapp.com/static/${post.file}`}
+                src={`https://drive.google.com/uc?export=view&id=${post.file}`}
                 alt={post.author}
                 className="vpimage"
               />

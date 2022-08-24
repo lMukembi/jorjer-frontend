@@ -110,6 +110,11 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
 }
 
+.pcontainer .vpimage img {
+  width: 200px;
+  height: 200px;
+}
+
 .pd h4 {
   text-align: center;
   white-space: nowrap;
@@ -199,7 +204,7 @@ p span {
     width: 360px;
   }
 
-  .pcontainer .vpimage {
+  .pcontainer .vpimage img {
     margin: 0rem 0rem auto auto;
     border-radius: 5px;
     object-fit: contain;

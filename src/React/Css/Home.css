@@ -38,6 +38,16 @@
   min-width: 300px;
 }
 
+.or hr {
+  flex: auto;
+  border: none;
+  height: 1px;
+  background-color: rgb(94, 91, 91);
+}
+.or span {
+  padding: 0.5em;
+}
+
 @media screen and (min-width: 1024px) {
   .home-feeds {
     width: 770px;

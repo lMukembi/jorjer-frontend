@@ -15,7 +15,6 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await axios.get(
       "https://jorjer.herokuapp.com/api/post/getPosts"
     );
-    console.log("getting all posts");
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);
@@ -27,8 +26,6 @@ export const getUserPosts = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `https://jorjer.herokuapp.com/api/post/getUserPosts/${id}`
     );
-    console.log("getting user posts");
-
     dispatch({ type: GET_USER_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error.message);

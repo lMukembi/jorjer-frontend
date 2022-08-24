@@ -34,10 +34,9 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPosts());
-    // setData(posts);
     let text = setInterval(changeText, 2000);
     return () => clearInterval(text);
-  }, [location.key, changeText]);
+  }, [location.key, posts, changeText]);
 
   useEffect(() => {
     setData(posts);
@@ -101,9 +100,15 @@ function Home() {
                 alt="Jorjer no results"
               />
 
-              <p>No posts available that match with the filter.</p>
-              <p>Try another filter</p>
-              <p>or</p>
+              <p>
+                No posts available that match with the filter. Try another
+                filter.
+              </p>
+              <div className="or">
+                <hr />
+                <span>OR</span>
+                <hr />
+              </div>
               <button
                 style={{
                   marginTop: "1rem",
@@ -114,7 +119,7 @@ function Home() {
                 }}
                 onClick={() => setData(posts)}
               >
-                Go back to home
+                Go back
               </button>
             </div>
           )}

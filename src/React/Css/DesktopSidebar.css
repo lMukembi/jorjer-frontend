@@ -9,10 +9,13 @@
   left: 0.25rem;
   z-index: 10;
   width: 230px;
+  overflow-x: scroll;
+  overflow-y: auto;
 }
 
 .desktop-sidebar span {
   margin-left: 0.4rem;
+  font-size: 15px;
 }
 
 .desktop-sidebar li {
