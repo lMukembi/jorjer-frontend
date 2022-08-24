@@ -11,6 +11,8 @@
   width: 230px;
   overflow-x: scroll;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .desktop-sidebar span {
@@ -20,6 +22,10 @@
 
 .desktop-sidebar li {
   margin: 1rem auto auto auto;
+}
+
+.desktop-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (min-width: 1200px) {

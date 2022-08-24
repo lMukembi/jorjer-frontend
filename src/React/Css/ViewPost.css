@@ -9,6 +9,21 @@
   padding: 0.4rem;
   width: 380px;
   z-index: 6;
+  transition: all 0.2s ease;
+}
+
+.svpost {
+  position: fixed;
+  bottom: 3.5rem;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.4rem;
+  width: 380px;
+  z-index: 6;
+  transition: all 0.2s ease;
 }
 
 .vpost h3 {
@@ -110,8 +125,8 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
 }
 
-.pcontainer .vpimage img {
-  width: 200px;
+.pcontainer .vpimage {
+  /* width: 200px; */
   height: 200px;
 }
 
@@ -204,11 +219,11 @@ p span {
     width: 360px;
   }
 
-  .pcontainer .vpimage img {
+  .pcontainer .vpimage {
     margin: 0rem 0rem auto auto;
     border-radius: 5px;
     object-fit: contain;
-    width: 300px;
+    width: 350px;
     height: 200px;
   }
 

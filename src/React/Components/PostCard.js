@@ -60,7 +60,7 @@ function PostCard({ post }) {
                   marginRight: "5px",
                 }}
               />
-              {post.category}
+              <span style={{ fontSize: "12px" }}>{post.category}</span>
             </p>
             <p style={flexline}>
               <CgMediaLive
@@ -70,7 +70,7 @@ function PostCard({ post }) {
                   marginRight: "5px",
                 }}
               />
-              {post.platform}
+              <span style={{ fontSize: "12px" }}>{post.platform}</span>
             </p>
             <p style={flexline}>
               <IoIosPeople
@@ -82,7 +82,7 @@ function PostCard({ post }) {
               />
 
               <span>
-                <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                <small style={{ fontSize: "12px" }}>
                   {post.followersCount}
                 </small>
                 <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>

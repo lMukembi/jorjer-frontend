@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import "../Css/ViewPost.css";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { SinceInitialTime } from "./SinceInitialTime";
 import { getPost } from "../../Redux/Queries/Actions/Posts";
 import MoreOptions from "./MoreOptions";
@@ -22,9 +22,22 @@ function ViewPost(props) {
   const history = useHistory();
 
   const [toggleMoreOptions, setToggleMoreOptions] = useState(false);
-  const [postOptions, setPostOptions] = useState(false);
   const userInfo = localStorage.getItem("userAccount");
   const userData = JSON.parse(userInfo);
+
+  const [scrolled, setScrolled] = useState(false);
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
 
   useEffect(() => {
     dispatch(getPost(postId));
@@ -48,7 +61,7 @@ function ViewPost(props) {
 
   return (
     <div>
-      <div className="vpost">
+      <div className={scrolled ? "svpost" : "vpost"}>
         <h3
           style={{
             justifyContent: "space-between",
@@ -154,7 +167,7 @@ function ViewPost(props) {
                       marginRight: "5px",
                     }}
                   />
-                  {post.category}
+                  <span style={{ fontSize: "12px" }}>{post.category}</span>
                 </p>
                 <p style={flexline}>
                   <CgMediaLive
@@ -164,7 +177,7 @@ function ViewPost(props) {
                       marginRight: "5px",
                     }}
                   />
-                  {post.platform}
+                  <span style={{ fontSize: "12px" }}>{post.platform}</span>
                 </p>
                 <p style={flexline}>
                   <div style={{ display: "flex" }}>
@@ -176,7 +189,7 @@ function ViewPost(props) {
                       }}
                     />
                     <span>
-                      <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
+                      <small style={{ fontSize: "12px" }}>
                         {post.followersCount}
                       </small>
                       <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>

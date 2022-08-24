@@ -42,6 +42,15 @@ function Home() {
     setData(posts);
   }, [posts]);
 
+  const setHidden = () => {
+    // console.log(document.body.style.overflow);
+    if (document.body.style.overflow !== "hidden") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -82,7 +91,7 @@ function Home() {
             data.map((post) => {
               return (
                 <>
-                  <PostCard key={post._id} post={post} />
+                  <PostCard key={post._id} post={post} onClick={setHidden} />
                 </>
               );
             })}
