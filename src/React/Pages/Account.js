@@ -42,7 +42,7 @@ function Account() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   const { userPosts } = useSelector((state) => state.UserPosts);
 
