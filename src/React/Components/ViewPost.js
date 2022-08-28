@@ -43,7 +43,7 @@ function ViewPost() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   useEffect(() => {
     setData(posts);
