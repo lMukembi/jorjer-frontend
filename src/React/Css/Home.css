@@ -1,7 +1,6 @@
 .home {
   width: 99%;
   position: absolute;
-  overflow-y: auto;
 }
 
 .home .header {

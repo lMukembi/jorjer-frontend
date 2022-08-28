@@ -1,22 +1,24 @@
+
+
 @media screen and (min-width: 1024px) {
-  .search-r-container {
+  .scontainer {
     width: 480px;
     margin: 5.5rem auto auto auto;
   }
 
-  .search-results {
+  .sresults {
     margin: auto;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .search-r-container {
+  .scontainer {
     width: 600px;
     margin: 4.5rem auto auto auto;
     position: relative;
   }
 
-  .search-results {
+  .sresults {
     margin: 1rem auto auto auto;
   }
 }

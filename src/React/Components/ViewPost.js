@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from "react-router";
 import "../Css/ViewPost.css";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useParams } from "react-router-dom";
@@ -14,38 +14,40 @@ import { IoChevronBackCircle, IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import Avatar from "../Components/Avatar.png";
 import JORJER from "../Components/JORJER.png";
+import Loader from "./Loader";
+import DesktopSidebar from "./DesktopSidebar";
+import MobileBar from "./MobileBar";
+import TopBar from "./TopBar";
 
-function ViewPost(props) {
+function ViewPost() {
   const dispatch = useDispatch();
   const { postId } = useParams();
-  const { post } = props.location.state;
+  const { posts, post, loading } = useSelector((state) => state.Posts);
+
   const history = useHistory();
 
   const [toggleMoreOptions, setToggleMoreOptions] = useState(false);
   const userInfo = localStorage.getItem("userAccount");
   const userData = JSON.parse(userInfo);
 
-  const [scrolled, setScrolled] = useState(false);
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 200) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+  const [data, setData] = useState([]);
+
+  const platformFilter = (platItem) => {
+    const items = posts.filter((carItem) => {
+      return carItem.platform === platItem;
+    });
+    setData(items);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
-
-  useEffect(() => {
-    dispatch(getPost(postId));
-  }, [postId]);
+  useEffect(() => dispatch(getPost(postId)));
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  });
+
+  useEffect(() => {
+    setData(posts);
+  }, [posts]);
 
   const IconStyles = {
     fontSize: "15px",
@@ -59,9 +61,26 @@ function ViewPost(props) {
     alignItems: "center",
   };
 
+  if (post === null) {
+    return <Redirect to="/page-not-found" />;
+  }
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div>
-      <div className={scrolled ? "svpost" : "vpost"}>
+      <TopBar platformFilter={platformFilter} />
+
+      {window.outerWidth > 1023 && (
+        <DesktopSidebar data={data} setData={setData} />
+      )}
+
+      <div className="vll" />
+
+      {window.innerWidth < 1024 && <MobileBar data={data} setData={setData} />}
+      <div className="vpost">
         <h3
           style={{
             justifyContent: "space-between",
@@ -123,7 +142,7 @@ function ViewPost(props) {
                 className="vpimage"
               />
             ) : (
-              <img className="vpimage" src={JORJER} />
+              <img className="vpimage" alt={post.author} src={JORJER} />
             )}
             <div className="pdetails">
               <p className="puser">

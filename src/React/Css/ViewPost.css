@@ -12,21 +12,6 @@
   transition: all 0.2s ease;
 }
 
-.svpost {
-  position: fixed;
-  bottom: 3.5rem;
-  left: 0;
-  right: 0;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 0.4rem;
-  width: 380px;
-  z-index: 6;
-  transition: all 0.2s ease;
-}
-
 .vpost h3 {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
@@ -127,7 +112,6 @@
 }
 
 .pcontainer .vpimage {
-  /* width: 200px; */
   height: 200px;
 }
 
@@ -139,6 +123,7 @@
 
 .pd .notice{
   padding-left: 1rem;
+  padding-bottom: 1rem;
 }
 
 p {

@@ -10,7 +10,7 @@
   padding: 0.4rem;
   height: 400px;
   width: 390px;
-  z-index: 8;
+  z-index: 100;
 }
 
 .sfc .ac {

@@ -36,20 +36,11 @@ function Home() {
     dispatch(getPosts());
     let text = setInterval(changeText, 2000);
     return () => clearInterval(text);
-  }, [location.key, posts, changeText]);
+  }, [location.key, changeText]);
 
   useEffect(() => {
     setData(posts);
   }, [posts]);
-
-  const setHidden = () => {
-    // console.log(document.body.style.overflow);
-    if (document.body.style.overflow !== "hidden") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "scroll";
-    }
-  };
 
   if (loading) {
     return <Loader />;
@@ -91,7 +82,7 @@ function Home() {
             data.map((post) => {
               return (
                 <>
-                  <PostCard key={post._id} post={post} onClick={setHidden} />
+                  <PostCard key={post._id} post={post} />
                 </>
               );
             })}
@@ -100,27 +91,24 @@ function Home() {
               style={{
                 alignItems: "center",
                 textAlign: "center",
-                marginTop: "1rem",
+                marginTop: "0.2rem",
               }}
             >
               <img
-                styles={{ width: "20px", height: "20px" }}
+                styles={{ width: "10px", height: "10px" }}
                 src={Filter}
                 alt="Jorjer no results"
               />
 
-              <p>
-                No posts available that match with the filter. Try another
-                filter.
-              </p>
+              <p>No posts available!</p>
               <div className="or">
                 <hr />
-                <span>OR</span>
+                <small>OR</small>
                 <hr />
               </div>
               <button
                 style={{
-                  marginTop: "1rem",
+                  marginTop: "0.2rem",
                   padding: "0.5rem",
                   backgroundColor: "rgb(55, 136, 184)",
                   borderRadius: "5px",

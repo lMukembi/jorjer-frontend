@@ -9,7 +9,6 @@ import JORJER from "../Components/JORJER.png";
 import "../Css/PostCard.css";
 
 function PostCard({ post }) {
-  console.log(post, "post image");
   const flexline = {
     display: "flex",
   };

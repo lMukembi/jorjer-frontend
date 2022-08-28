@@ -15,6 +15,7 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await axios.get(
       "https://jorjer.herokuapp.com/api/post/getPosts"
     );
+    console.log(data);
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);
@@ -37,30 +38,8 @@ export const getPost = (postId) => async (dispatch) => {
     const { data } = await axios.get(
       `https://jorjer.herokuapp.com/api/post/getPost/${postId}`
     );
+    console.log(data);
     dispatch({ type: GET_POST_SUCCESS, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const addImage = (formData) => async (dispatch) => {
-  const data = localStorage.getItem("userAccount");
-  const token = JSON.parse(data);
-
-  const headers = {
-    Authorization: `Bearer ${token.data}`,
-  };
-  const config = {
-    headers: headers,
-  };
-  try {
-    const { data } = await axios.post(
-      "https://jorjer.herokuapp.com/api/post/addImage",
-      formData,
-      config
-    );
-
-    dispatch({ type: ADD_IMAGE, payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -77,6 +56,9 @@ export const addPost = (formData) => async (dispatch) => {
     headers: headers,
   };
 
+  console.log(formData, "qwerty");
+  console.log(token, "wertyu");
+
   try {
     const { data } = await axios.post(
       "https://jorjer.herokuapp.com/api/post/addPost",
@@ -85,6 +67,7 @@ export const addPost = (formData) => async (dispatch) => {
     );
 
     dispatch({ type: ADD_POST_SUCCESS, payload: data });
+    window.location.reload(false);
   } catch (error) {
     console.log(error);
   }

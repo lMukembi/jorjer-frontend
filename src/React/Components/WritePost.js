@@ -8,7 +8,6 @@ import Avatar from "../Components/Avatar.png";
 import { addPost } from "../../Redux/Queries/Actions/Posts";
 import SelectOption from "../Components/SelectOption";
 import { BsImages } from "react-icons/bs";
-import "../Css/Share.css";
 
 const categories = [
   { name: "Home and Office" },
@@ -252,7 +251,8 @@ function WritePost({ close, value }) {
     formData.append("audienceType", postForm.audienceType);
 
     dispatch(addPost(formData));
-    window.location.reload(false);
+    // window.location.reload(false);
+    console.log(postForm, "qwerty");
   };
 
   if (!userData) {

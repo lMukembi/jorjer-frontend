@@ -11,6 +11,10 @@ import Logout from "../Components/Logout";
 import Avatar from "../Components/Avatar.png";
 import PostCard from "../Components/PostCard";
 import { getUserPosts } from "../../Redux/Queries/Actions/Posts";
+import TopBar from "../Components/TopBar";
+import DesktopSidebar from "../Components/DesktopSidebar";
+import MobileBar from "../Components/MobileBar";
+import Loader from "../Components/Loader";
 
 function Account() {
   const dispatch = useDispatch();
@@ -21,19 +25,33 @@ function Account() {
   const userInfo = localStorage.getItem("userAccount");
   const userData = JSON.parse(userInfo);
 
+  const { posts, loading } = useSelector((state) => state.Posts);
+  const [data, setData] = useState([]);
+
+  const platformFilter = (platItem) => {
+    const items = posts.filter((carItem) => {
+      return carItem.platform === platItem;
+    });
+    setData(items);
+  };
+
   useEffect(() => {
     dispatch(getUser(id));
     dispatch(getUserPosts(id));
-  }, []);
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  });
 
   const { userPosts } = useSelector((state) => state.UserPosts);
 
-  if (!userPosts.length) {
-    return <p>This account has 0 posts.</p>;
+  useEffect(() => {
+    setData(posts);
+  }, [posts]);
+
+  if (loading) {
+    return <Loader />;
   }
 
   if (!userData) {
@@ -43,8 +61,17 @@ function Account() {
   return (
     <div>
       <div className="account-container">
-        <div className="vertical-l-line" />
+        <TopBar platformFilter={platformFilter} />
 
+        {window.outerWidth > 1023 && (
+          <DesktopSidebar data={data} setData={setData} />
+        )}
+
+        <div className="vll" />
+
+        {window.innerWidth < 1024 && (
+          <MobileBar data={data} setData={setData} />
+        )}
         <div>
           <div className="profile-header">
             <div className="hd">
@@ -152,7 +179,7 @@ function Account() {
               </ul>
             </div>
             <div className="uad">
-              <p>{userData.result.bio} I am a social media influencer...</p>
+              <p>{userData.result.bio}</p>
 
               <p
                 style={{
@@ -167,15 +194,19 @@ function Account() {
           </div>
 
           <div style={{ padding: "0.2rem" }}>
-            <h1 style={{ marginLeft: "4.5rem", marginBottom: "1rem" }}>
+            <h1 style={{ marginLeft: "4.5rem", marginBottom: "0.5rem" }}>
               Posts
             </h1>
             <hr style={{ color: "blue" }} />
-            <div>
-              {userPosts.map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
-            </div>
+            {userPosts.length > 0 ? (
+              <div>
+                {userPosts.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+              </div>
+            ) : (
+              <p>This account has 0 posts.</p>
+            )}
           </div>
         </div>
       </div>

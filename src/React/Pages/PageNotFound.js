@@ -36,7 +36,9 @@ const PageNotFound = () => {
             backgroundColor: "rgb(94, 91, 91)",
           }}
         />
-        <span style={{ padding: "0.5em", color: "rgb(55, 135, 185)" }}>OR</span>
+        <small style={{ padding: "0.5em", color: "rgb(55, 135, 185)" }}>
+          OR
+        </small>
         <hr
           style={{
             flex: "auto",
@@ -53,6 +55,7 @@ const PageNotFound = () => {
           borderRadius: "5px",
           cursor: "pointer",
           textDecoration: "none",
+          color: "black",
         }}
         to="/"
       >

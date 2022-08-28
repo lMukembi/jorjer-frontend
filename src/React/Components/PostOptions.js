@@ -52,14 +52,7 @@ const PostOptions = (props) => {
             style={{ color: "blue", fontSize: "20px", marginLeft: "1rem" }}
           />
           <span style={{ marginLeft: "5px" }}>Add job</span>
-          {addJob && (
-            <WritePost
-              value="Apply Job"
-              current={current}
-              setCurrent={setCurrent}
-              close={setAddJob}
-            />
-          )}
+          {addJob && <WritePost value="Get Job" close={setAddJob} />}
         </li>
 
         <li
@@ -74,14 +67,7 @@ const PostOptions = (props) => {
             style={{ color: "#FF9900", fontSize: "20px", marginLeft: "1rem" }}
           />
           <span style={{ marginLeft: "5px" }}>Sell account</span>
-          {sellAccount && (
-            <WritePost
-              value="On Sale"
-              current={current}
-              setCurrent={setCurrent}
-              close={setSellAccount}
-            />
-          )}
+          {sellAccount && <WritePost value="On Sale" close={setSellAccount} />}
         </li>
 
         <li
@@ -99,12 +85,7 @@ const PostOptions = (props) => {
           <span style={{ marginLeft: "5px" }}>Make Money</span>
 
           {monetizeAccount && (
-            <WritePost
-              value="Hire Me"
-              current={current}
-              setCurrent={setCurrent}
-              close={setMonetizeAccount}
-            />
+            <WritePost value="Hire Me" close={setMonetizeAccount} />
           )}
         </li>
       </ul>
