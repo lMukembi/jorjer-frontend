@@ -11,7 +11,7 @@ const Icon_Styles = {
   color: "#514b4b",
 };
 
-const MoreOptions = ({ post, close, setCurrent }) => {
+const MoreOptions = ({ post, close }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 

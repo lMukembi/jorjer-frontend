@@ -7,7 +7,6 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { SiSellfy } from "react-icons/si";
 
 const ShareOptions = (props) => {
-  const [current, setCurrent] = useState(null);
   const [addJob, setAddJob] = useState(false);
   const [sellAccount, setSellAccount] = useState(false);
   const [monetizeAccount, setMonetizeAccount] = useState(false);
@@ -35,7 +34,6 @@ const ShareOptions = (props) => {
           <WritePost
             value="Hire Me"
             monetizeAccount={monetizeAccount}
-            setCurrent={setCurrent}
             close={setMonetizeAccount}
           />
         )}
@@ -52,7 +50,6 @@ const ShareOptions = (props) => {
           <WritePost
             value="On Sale"
             sellAccount={sellAccount}
-            setCurrent={setCurrent}
             close={setSellAccount}
           />
         )}
@@ -66,12 +63,7 @@ const ShareOptions = (props) => {
           <span style={{ marginLeft: "5px" }}>Add Job</span>
         </li>
         {addJob && (
-          <WritePost
-            value="Get Job"
-            addJob={addJob}
-            setCurrent={setCurrent}
-            close={setAddJob}
-          />
+          <WritePost value="Get Job" addJob={addJob} close={setAddJob} />
         )}
       </ul>
       <div className="form-close" onClick={() => props.close(false)} />

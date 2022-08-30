@@ -38,7 +38,7 @@ export const getPost = (postId) => async (dispatch) => {
     const { data } = await axios.get(
       `https://jorjer.herokuapp.com/api/post/getPost/${postId}`
     );
-    console.log(data);
+
     dispatch({ type: GET_POST_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);

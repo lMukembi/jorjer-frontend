@@ -251,7 +251,6 @@ function WritePost({ close, value }) {
     formData.append("audienceType", postForm.audienceType);
 
     dispatch(addPost(formData));
-    // window.location.reload(false);
     console.log(postForm, "qwerty");
   };
 
@@ -261,205 +260,207 @@ function WritePost({ close, value }) {
 
   return (
     <div>
-      <form
-        autoComplete="off"
-        className="sc"
-        action="/"
-        method="POST"
-        encType="multipart/form-data"
-      >
-        <p className="flex-row"></p>
+      <div className="sc">
+        <form
+          autoComplete="off"
+          action="/"
+          method="POST"
+          encType="multipart/form-data"
+        >
+          <p className="flex-row"></p>
 
-        <div className="sfc">
-          <p className="ac">
-            <span>
-              {userData.result.avatar ? (
-                <img
-                  style={{
-                    width: "28px",
-                    height: "284px",
-                    borderRadius: "50%",
-                  }}
-                  src={userData.result.avatar}
-                  alt={userData.result.username}
-                />
-              ) : (
-                <img
-                  style={{
-                    width: "28px",
-                    height: "28px",
-                    borderRadius: "50%",
-                  }}
-                  src={Avatar}
-                  alt={userData.result.username}
-                />
-              )}
-            </span>
-
-            <span style={{ margin: "auto", fontSize: "20px" }}>
-              Create a post
-            </span>
-
-            <span>
-              <AiFillCloseCircle
-                onClick={() => close()}
-                style={{
-                  color: "rgb(55, 136, 184)",
-                  cursor: "pointer",
-                  fontSize: "30px",
-                }}
-              />
-            </span>
-          </p>
-
-          <p className="ips">
-            <span>
-              {categoryType && (
-                <SelectOption
-                  style={{ cursor: "pointer" }}
-                  value={postForm.category}
-                  prompt="Select category ..."
-                  onChange={(val) =>
-                    setPostForm({ ...postForm, category: val })
-                  }
-                  categories={categories}
-                />
-              )}
-            </span>
-
-            <span>
-              {platformType && (
-                <SelectOption
-                  style={{ cursor: "pointer" }}
-                  value={postForm.platform}
-                  prompt="Select platform ..."
-                  onChange={(val) =>
-                    setPostForm({ ...postForm, platform: val })
-                  }
-                  categories={platforms}
-                />
-              )}
-            </span>
-
-            <span className="fa">
-              <p>
-                <h6>
-                  {followersNo && (
-                    <SelectOption
-                      style={{ cursor: "pointer" }}
-                      value={postForm.followersCount}
-                      prompt="Select follower range ..."
-                      onChange={(val) =>
-                        setPostForm({
-                          ...postForm,
-                          followersCount: val,
-                        })
-                      }
-                      categories={followersRange}
-                    />
-                  )}
-                </h6>
-                <h6>
-                  {audienceType && (
-                    <SelectOption
-                      style={{ cursor: "pointer" }}
-                      value={postForm.audienceType}
-                      prompt="Choose audience type ..."
-                      onChange={(val) =>
-                        setPostForm({ ...postForm, audienceType: val })
-                      }
-                      categories={audience}
-                    />
-                  )}
-                </h6>
-              </p>
-            </span>
-            <textarea
-              cols="10"
-              rows="3"
-              value={postForm.content}
-              onChange={(e) =>
-                setPostForm({ ...postForm, content: e.target.value })
-              }
-              type="text"
-              name="content"
-              placeholder="Add description for your account here."
-            />
-          </p>
-
-          <p>
-            <div className="flex-column choose-file">
-              <input
-                type="file"
-                accept="image/*"
-                name="file"
-                filename="postImage"
-                onChange={submitImage}
-                id="actual-btn"
-                hidden
-              />
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginRight: "5px",
-                }}
-              >
-                <p>
-                  <label
-                    for="actual-btn"
+          <div className="sfc">
+            <p className="ac">
+              <span>
+                {userData.result.avatar ? (
+                  <img
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      whiteSpace: "nowrap",
+                      width: "28px",
+                      height: "284px",
+                      borderRadius: "50%",
                     }}
-                  >
-                    <BsImages
-                      style={{
-                        fontSize: "20px",
-                        color: "green",
-                        marginRight: "5px",
-                      }}
-                    />
-                    Add Image
-                  </label>
-                </p>
-                <p style={{ left: "8rem", bottom: "1rem" }}>
-                  {imageUrl && postImage && (
-                    <>
-                      <span style={{ display: "flex" }}>
-                        <img
-                          src={imageUrl}
-                          alt={postImage.name}
-                          height="50px"
-                          style={{ marginLeft: "10px", borderRadius: "5px" }}
-                        />
+                    src={userData.result.avatar}
+                    alt={userData.result.username}
+                  />
+                ) : (
+                  <img
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "50%",
+                    }}
+                    src={Avatar}
+                    alt={userData.result.username}
+                  />
+                )}
+              </span>
 
-                        <small>
-                          <AiFillCloseCircle
-                            onClick={() => setPostImage(!postImage)}
-                            style={{
-                              color: "rgb(55, 135, 185)",
-                              cursor: "pointer",
-                            }}
-                          />
-                        </small>
-                      </span>
-                    </>
-                  )}
+              <span style={{ margin: "auto", fontSize: "20px" }}>
+                Create a post
+              </span>
+
+              <span>
+                <AiFillCloseCircle
+                  onClick={() => close()}
+                  style={{
+                    color: "rgb(55, 136, 184)",
+                    cursor: "pointer",
+                    fontSize: "30px",
+                  }}
+                />
+              </span>
+            </p>
+
+            <p className="ips">
+              <span>
+                {categoryType && (
+                  <SelectOption
+                    style={{ cursor: "pointer" }}
+                    value={postForm.category}
+                    prompt="Select category ..."
+                    onChange={(val) =>
+                      setPostForm({ ...postForm, category: val })
+                    }
+                    categories={categories}
+                  />
+                )}
+              </span>
+
+              <span>
+                {platformType && (
+                  <SelectOption
+                    style={{ cursor: "pointer" }}
+                    value={postForm.platform}
+                    prompt="Select platform ..."
+                    onChange={(val) =>
+                      setPostForm({ ...postForm, platform: val })
+                    }
+                    categories={platforms}
+                  />
+                )}
+              </span>
+
+              <span className="fa">
+                <p>
+                  <h6>
+                    {followersNo && (
+                      <SelectOption
+                        style={{ cursor: "pointer" }}
+                        value={postForm.followersCount}
+                        prompt="Select follower range ..."
+                        onChange={(val) =>
+                          setPostForm({
+                            ...postForm,
+                            followersCount: val,
+                          })
+                        }
+                        categories={followersRange}
+                      />
+                    )}
+                  </h6>
+                  <h6>
+                    {audienceType && (
+                      <SelectOption
+                        style={{ cursor: "pointer" }}
+                        value={postForm.audienceType}
+                        prompt="Choose audience type ..."
+                        onChange={(val) =>
+                          setPostForm({ ...postForm, audienceType: val })
+                        }
+                        categories={audience}
+                      />
+                    )}
+                  </h6>
                 </p>
+              </span>
+              <textarea
+                cols="10"
+                rows="3"
+                value={postForm.content}
+                onChange={(e) =>
+                  setPostForm({ ...postForm, content: e.target.value })
+                }
+                type="text"
+                name="content"
+                placeholder="Add description for your account here."
+              />
+            </p>
+
+            <p>
+              <div className="flex-column choose-file">
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="file"
+                  filename="postImage"
+                  onChange={submitImage}
+                  id="actual-btn"
+                  hidden
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginRight: "5px",
+                  }}
+                >
+                  <p>
+                    <label
+                      for="actual-btn"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <BsImages
+                        style={{
+                          fontSize: "20px",
+                          color: "green",
+                          marginRight: "5px",
+                        }}
+                      />
+                      Add Image
+                    </label>
+                  </p>
+                  <p style={{ left: "8rem", bottom: "1rem" }}>
+                    {imageUrl && postImage && (
+                      <>
+                        <span style={{ display: "flex" }}>
+                          <img
+                            src={imageUrl}
+                            alt={postImage.name}
+                            height="50px"
+                            style={{ marginLeft: "10px", borderRadius: "5px" }}
+                          />
+
+                          <small>
+                            <AiFillCloseCircle
+                              onClick={() => setPostImage(!postImage)}
+                              style={{
+                                color: "rgb(55, 135, 185)",
+                                cursor: "pointer",
+                              }}
+                            />
+                          </small>
+                        </span>
+                      </>
+                    )}
+                  </p>
+                </div>
               </div>
-            </div>
-            <span
-              type="submit"
-              className="share-btn"
-              onClick={handleSubmitPost}
-            >
-              Post
-            </span>
-          </p>
-        </div>
-      </form>
+              <span
+                type="submit"
+                className="share-btn"
+                onClick={handleSubmitPost}
+              >
+                Post
+              </span>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div className="sclose" onClick={() => close(false)} />
     </div>
   );
 }

@@ -13,7 +13,6 @@ import PostCard from "../Components/PostCard";
 import { getUserPosts } from "../../Redux/Queries/Actions/Posts";
 import TopBar from "../Components/TopBar";
 import DesktopSidebar from "../Components/DesktopSidebar";
-import MobileBar from "../Components/MobileBar";
 import Loader from "../Components/Loader";
 
 function Account() {
@@ -69,9 +68,6 @@ function Account() {
 
         <div className="vll" />
 
-        {window.innerWidth < 1024 && (
-          <MobileBar data={data} setData={setData} />
-        )}
         <div>
           <div className="profile-header">
             <div className="hd">

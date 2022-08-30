@@ -16,13 +16,15 @@ import Avatar from "../Components/Avatar.png";
 import JORJER from "../Components/JORJER.png";
 import Loader from "./Loader";
 import DesktopSidebar from "./DesktopSidebar";
-import MobileBar from "./MobileBar";
 import TopBar from "./TopBar";
 
 function ViewPost() {
   const dispatch = useDispatch();
   const { postId } = useParams();
-  const { posts, post, loading } = useSelector((state) => state.Posts);
+  const { post, loading } = useSelector((state) => state.Posts);
+  useEffect(() => {
+    dispatch(getPost(postId));
+  });
 
   const history = useHistory();
 
@@ -30,24 +32,9 @@ function ViewPost() {
   const userInfo = localStorage.getItem("userAccount");
   const userData = JSON.parse(userInfo);
 
-  const [data, setData] = useState([]);
-
-  const platformFilter = (platItem) => {
-    const items = posts.filter((carItem) => {
-      return carItem.platform === platItem;
-    });
-    setData(items);
-  };
-
-  useEffect(() => dispatch(getPost(postId)));
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    setData(posts);
-  }, [posts]);
+  });
 
   const IconStyles = {
     fontSize: "15px",
@@ -61,25 +48,24 @@ function ViewPost() {
     alignItems: "center",
   };
 
-  if (post === null) {
-    return <Redirect to="/page-not-found" />;
-  }
-
   if (loading) {
     return <Loader />;
   }
 
+  console.log(post);
+
+  if (post === null) {
+    return <Redirect to="/page-not-found" />;
+  }
+
   return (
     <div>
-      <TopBar platformFilter={platformFilter} />
+      <TopBar />
 
-      {window.outerWidth > 1023 && (
-        <DesktopSidebar data={data} setData={setData} />
-      )}
+      {window.outerWidth > 1023 && <DesktopSidebar />}
 
       <div className="vll" />
 
-      {window.innerWidth < 1024 && <MobileBar data={data} setData={setData} />}
       <div className="vpost">
         <h3
           style={{
@@ -120,7 +106,7 @@ function ViewPost() {
               cursor: "pointer",
             }}
           >
-            {post.author && userData && (
+            {post.authorId && (
               <>
                 <HiOutlineDotsVertical
                   onClick={() => setToggleMoreOptions(!toggleMoreOptions)}

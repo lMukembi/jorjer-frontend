@@ -1,13 +1,13 @@
 .pstsc {
   position: absolute;
-  bottom: 0rem;
+  bottom: 0;
   background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
-  z-index: 10;
+  z-index: 5;
   border-radius: 10px;
-  width: 380px;
-  left: 0.5rem;
-  right: 0.5rem;
+  width: 99%;
+  left: 0;
+  right: 0;
   padding: 0.5rem;
 }
 
@@ -17,4 +17,13 @@
   border-radius: 5px;
   cursor: pointer;
   padding: 0.2rem;
+}
+
+.pclose {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
 }
