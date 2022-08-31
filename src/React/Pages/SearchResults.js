@@ -52,8 +52,8 @@ const SearchResults = (search) => {
       <div
         style={{
           zIndex: 1,
-          position: "relative",
-          width: "762px",
+          // position: "relative",
+          // width: "762px",
           backgroundColor: "white",
           left: "453px",
           top: "6rem",

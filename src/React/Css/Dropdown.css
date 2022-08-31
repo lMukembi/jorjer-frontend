@@ -52,6 +52,7 @@
   box-sizing: border-box;
   margin-top: -1px;
   max-height: 200px;
+  text-align: left;
   overflow-y: auto;
   position: absolute;
   border-radius: 5px;

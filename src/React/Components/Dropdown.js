@@ -33,7 +33,7 @@ const Dropdown = ({
               type="text"
               value={value}
               onChange={handleGetCategory}
-              placeholder={value ? value : prompt }
+              placeholder={value ? value : prompt}
               onClick={() => setOpen(!open)}
             />
           </div>
@@ -42,12 +42,10 @@ const Dropdown = ({
 
           <div className={`options ${open ? "open" : null}`}>
             {categories &&
-              categories.map((category) => (
+              categories.map((category, idx) => (
                 <div
-                  key={category}
-                  className={`option ${
-                    value === category ? "selected" : null
-                  }`}
+                  key={idx}
+                  className={`option ${value === category ? "selected" : null}`}
                   onClick={() => selectCategory(category)}
                   onTouchEnd={() => selectCategory(category)}
                 >

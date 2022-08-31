@@ -22,9 +22,6 @@ function ViewPost() {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const { post, loading } = useSelector((state) => state.Posts);
-  useEffect(() => {
-    dispatch(getPost(postId));
-  });
 
   const history = useHistory();
 
@@ -35,6 +32,7 @@ function ViewPost() {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+  useEffect(() => dispatch(getPost(postId)), [postId]);
 
   const IconStyles = {
     fontSize: "15px",
@@ -52,194 +50,194 @@ function ViewPost() {
     return <Loader />;
   }
 
-  console.log(post);
-
-  if (post === null) {
-    return <Redirect to="/page-not-found" />;
-  }
-
   return (
     <div>
-      <TopBar />
+      {post !== null && (
+        <>
+          <TopBar />
 
-      {window.outerWidth > 1023 && <DesktopSidebar />}
+          {window.outerWidth > 1023 && <DesktopSidebar />}
 
-      <div className="vll" />
+          <div className="vll" />
 
-      <div className="vpost">
-        <h3
-          style={{
-            justifyContent: "space-between",
-            alignItems: "center",
-            borderRadius: "10px",
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <span
-            style={{
-              left: "10px",
-              top: "5px",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <IoChevronBackCircle
-              onClick={() => history.goBack()}
+          <div className="vpost">
+            <h3
               style={{
-                color: "rgb(55, 136, 184)",
-                cursor: "pointer",
-                fontSize: "30px",
-                marginRight: "0.45rem",
-                paddingLeft: "5px",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "row",
               }}
-            />
-            Go Back
-          </span>
-          {post.author}'s post
-          <span
-            style={{
-              right: "10px",
-              top: "5px",
-              padding: "5px",
-              cursor: "pointer",
-            }}
-          >
-            {post.authorId && (
-              <>
-                <HiOutlineDotsVertical
-                  onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
-                  style={IconStyles}
+            >
+              <span
+                style={{
+                  left: "10px",
+                  top: "5px",
+                  alignItems: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <IoChevronBackCircle
+                  onClick={() => history.goBack()}
+                  style={{
+                    color: "rgb(55, 136, 184)",
+                    cursor: "pointer",
+                    fontSize: "30px",
+                    marginRight: "0.45rem",
+                    paddingLeft: "5px",
+                  }}
                 />
-              </>
-            )}
-          </span>
-          {toggleMoreOptions && (
-            <MoreOptions close={setToggleMoreOptions} post={post} />
-          )}
-        </h3>
-        <div className="pcontainer">
-          <div>
-            {post.file ? (
-              <img
-                src={`https://drive.google.com/uc?export=view&id=${post.file}`}
-                alt={post.author}
-                className="vpimage"
-              />
-            ) : (
-              <img className="vpimage" alt={post.author} src={JORJER} />
-            )}
-            <div className="pdetails">
-              <p className="puser">
-                {post.avatar ? (
+                Go Back
+              </span>
+              {post.author}'s post
+              <span
+                style={{
+                  right: "10px",
+                  top: "5px",
+                  padding: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                {post.authorId && (
+                  <>
+                    <HiOutlineDotsVertical
+                      onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
+                      style={IconStyles}
+                    />
+                  </>
+                )}
+              </span>
+              {toggleMoreOptions && (
+                <MoreOptions close={setToggleMoreOptions} post={post} />
+              )}
+            </h3>
+            <div className="pcontainer">
+              <div>
+                {post.file ? (
                   <img
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      borderRadius: "50%",
-                      marginRight: "0.5rem",
-                    }}
-                    src={post.avatar}
+                    src={`https://drive.google.com/uc?export=view&id=${post.file}`}
                     alt={post.author}
+                    className="vpimage"
                   />
                 ) : (
-                  <img
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      borderRadius: "50%",
-                      marginRight: "0.5rem",
-                    }}
-                    src={Avatar}
-                    alt={post.author}
-                  />
+                  <img className="vpimage" alt={post.author} src={JORJER} />
                 )}
-                <span>
-                  {post && post.author.length > 10
-                    ? post.author.substring(0, 10) + "..."
-                    : post.author}
-                </span>
-                <span>•</span>
-                <span>{SinceInitialTime(post.createdAt)}</span>
-              </p>
-              <div className="pstds">
-                <p style={flexline}>
-                  <BsGrid
-                    style={{
-                      color: "green",
-                      fontSize: "17px",
-                      marginRight: "5px",
-                    }}
-                  />
-                  <span style={{ fontSize: "12px" }}>{post.category}</span>
-                </p>
-                <p style={flexline}>
-                  <CgMediaLive
-                    style={{
-                      color: "red",
-                      fontSize: "17px",
-                      marginRight: "5px",
-                    }}
-                  />
-                  <span style={{ fontSize: "12px" }}>{post.platform}</span>
-                </p>
-                <p style={flexline}>
-                  <div style={{ display: "flex" }}>
-                    <IoIosPeople
-                      style={{
-                        color: "rgb(55, 135, 185)",
-                        fontSize: "17px",
-                        marginRight: "5px",
-                      }}
-                    />
+                <div className="pdetails">
+                  <p className="puser">
+                    {post.avatar ? (
+                      <img
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          borderRadius: "50%",
+                          marginRight: "0.5rem",
+                        }}
+                        src={post.avatar}
+                        alt={post.author}
+                      />
+                    ) : (
+                      <img
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          borderRadius: "50%",
+                          marginRight: "0.5rem",
+                        }}
+                        src={Avatar}
+                        alt={post.author}
+                      />
+                    )}
                     <span>
-                      <small style={{ fontSize: "12px" }}>
-                        {post.followersCount}
-                      </small>
-                      <small style={{ marginLeft: "0.2rem", fontSize: "12px" }}>
-                        {post.audienceType}
-                      </small>
+                      {post && post.author.length > 10
+                        ? post.author.substring(0, 10) + "..."
+                        : post.author}
                     </span>
+                    <span>•</span>
+                    <span>{SinceInitialTime(post.createdAt)}</span>
+                  </p>
+                  <div className="pstds">
+                    <p style={flexline}>
+                      <BsGrid
+                        style={{
+                          color: "green",
+                          fontSize: "17px",
+                          marginRight: "5px",
+                        }}
+                      />
+                      <span style={{ fontSize: "12px" }}>{post.category}</span>
+                    </p>
+                    <p style={flexline}>
+                      <CgMediaLive
+                        style={{
+                          color: "red",
+                          fontSize: "17px",
+                          marginRight: "5px",
+                        }}
+                      />
+                      <span style={{ fontSize: "12px" }}>{post.platform}</span>
+                    </p>
+                    <p style={flexline}>
+                      <div style={{ display: "flex" }}>
+                        <IoIosPeople
+                          style={{
+                            color: "rgb(55, 135, 185)",
+                            fontSize: "17px",
+                            marginRight: "5px",
+                          }}
+                        />
+                        <span>
+                          <small style={{ fontSize: "12px" }}>
+                            {post.followersCount}
+                          </small>
+                          <small
+                            style={{ marginLeft: "0.2rem", fontSize: "12px" }}
+                          >
+                            {post.audienceType}
+                          </small>
+                        </span>
+                      </div>
+                    </p>
+                    <p style={flexline}>{post.content}</p>
                   </div>
-                </p>
-                <p style={flexline}>{post.content}</p>
+                </div>
+              </div>
+              <div className="bc">
+                <div className="pd">
+                  <h4>Contact {post.author} using these details.</h4>
+                  <p className="pde">
+                    <MdEmail style={{ marginRight: "5px", color: "black" }} />
+                    {post.email}
+                  </p>
+                  <p
+                    style={{
+                      backgroundColor: "rgb(55, 135, 185)",
+                      color: "white",
+                      display: "flex",
+                      flexDirection: "row",
+                      paddingTop: "0.3rem",
+                      paddingBottom: "0.3rem",
+                      paddingLeft: "6rem",
+                      paddingRight: "6rem",
+                    }}
+                  >
+                    <IoCall style={{ marginRight: "5px", color: "black" }} />
+                    {post.phone}
+                  </p>
+                  <h4>Check this notice!</h4>
+                  <ol className="notice">
+                    <li>Review the social media account up to satisfaction.</li>
+                    <li>Be careful of scammers.</li>
+                    <li>Never pay in advance.</li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bc">
-            <div className="pd">
-              <h4>Contact {post.author} using these details.</h4>
-              <p className="pde">
-                <MdEmail style={{ marginRight: "5px", color: "black" }} />
-                {post.email}
-              </p>
-              <p
-                style={{
-                  backgroundColor: "rgb(55, 135, 185)",
-                  color: "white",
-                  display: "flex",
-                  flexDirection: "row",
-                  paddingTop: "0.3rem",
-                  paddingBottom: "0.3rem",
-                  paddingLeft: "6rem",
-                  paddingRight: "6rem",
-                }}
-              >
-                <IoCall style={{ marginRight: "5px", color: "black" }} />
-                {post.phone}
-              </p>
-              <h4>Check this notice!</h4>
-              <ol className="notice">
-                <li>Review the social media account up to satisfaction.</li>
-                <li>Be careful of scammers.</li>
-                <li>Never pay in advance.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="vclose" />
+          <div className="vclose" />
+        </>
+      )}
     </div>
   );
 }

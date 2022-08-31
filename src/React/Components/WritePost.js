@@ -301,7 +301,7 @@ function WritePost({ close, value }) {
 
               <span>
                 <AiFillCloseCircle
-                  onClick={() => close()}
+                  onClick={() => close(false)}
                   style={{
                     color: "rgb(55, 136, 184)",
                     cursor: "pointer",

@@ -22,10 +22,7 @@ function MobileBar({ setData }) {
       </div>
 
       <div>
-        <p
-          className="link"
-          onClick={() => setTogglePostOptions(!togglePostOptions)}
-        >
+        <p className="link" onClick={() => setTogglePostOptions(true)}>
           <BsPlusCircle style={IconStyles} />
         </p>
         {togglePostOptions && <PostOptions close={setTogglePostOptions} />}

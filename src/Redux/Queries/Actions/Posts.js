@@ -4,7 +4,6 @@ import {
   GET_POSTS_SUCCESS,
   UPDATE_POST_SUCCESS,
   DELETE_POST_SUCCESS,
-  ADD_IMAGE,
   GET_USER_POSTS_SUCCESS,
 } from "../Constants/Posts";
 
@@ -15,7 +14,7 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await axios.get(
       "https://jorjer.herokuapp.com/api/post/getPosts"
     );
-    console.log(data);
+
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);
@@ -55,9 +54,6 @@ export const addPost = (formData) => async (dispatch) => {
   const config = {
     headers: headers,
   };
-
-  console.log(formData, "qwerty");
-  console.log(token, "wertyu");
 
   try {
     const { data } = await axios.post(

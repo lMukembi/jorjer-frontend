@@ -40,57 +40,64 @@ const PostOptions = (props) => {
           >
             Select post to create
           </p>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "1rem",
-              marginTop: "1rem",
-            }}
-            onClick={() => setAddJob(!addJob)}
-          >
-            <IoBagAdd
-              style={{ color: "blue", fontSize: "20px", marginLeft: "1rem" }}
-            />
-            <span style={{ marginLeft: "5px" }}>Add job</span>
+          <>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "1rem",
+                marginTop: "1rem",
+              }}
+              onClick={() => setAddJob(true)}
+            >
+              <IoBagAdd
+                style={{ color: "blue", fontSize: "20px", marginLeft: "1rem" }}
+              />
+              <span style={{ marginLeft: "5px" }}>Add job</span>
+            </li>
             {addJob && <WritePost value="Get Job" close={setAddJob} />}
-          </li>
-
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "1rem",
-            }}
-            onClick={() => setSellAccount(!sellAccount)}
-          >
-            <SiSellfy
-              style={{ color: "#FF9900", fontSize: "20px", marginLeft: "1rem" }}
-            />
-            <span style={{ marginLeft: "5px" }}>Sell account</span>
+          </>
+          <>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "1rem",
+              }}
+              onClick={() => setSellAccount(true)}
+            >
+              <SiSellfy
+                style={{
+                  color: "#FF9900",
+                  fontSize: "20px",
+                  marginLeft: "1rem",
+                }}
+              />
+              <span style={{ marginLeft: "5px" }}>Sell account</span>
+            </li>
             {sellAccount && (
               <WritePost value="On Sale" close={setSellAccount} />
             )}
-          </li>
+          </>
+          <>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "1rem",
+              }}
+              onClick={() => setMonetizeAccount(true)}
+            >
+              <GiTakeMyMoney
+                style={{ color: "green", fontSize: "20px", marginLeft: "1rem" }}
+              />
 
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "1rem",
-            }}
-            onClick={() => setMonetizeAccount(!monetizeAccount)}
-          >
-            <GiTakeMyMoney
-              style={{ color: "green", fontSize: "20px", marginLeft: "1rem" }}
-            />
-
-            <span style={{ marginLeft: "5px" }}>Make Money</span>
-
+              <span style={{ marginLeft: "5px" }}>Make Money</span>
+            </li>
             {monetizeAccount && (
               <WritePost value="Hire Me" close={setMonetizeAccount} />
             )}
-          </li>
+          </>
         </ul>
       </div>
       <div className="pclose" onClick={() => props.close()} />
