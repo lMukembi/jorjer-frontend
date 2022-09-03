@@ -202,7 +202,7 @@ const audience = [
   { name: "followers" },
   { name: "subscribers" },
   { name: "page likes" },
-  { name: "contants" },
+  { name: "contacts" },
 ];
 
 function WritePost({ close, value }) {
@@ -251,7 +251,6 @@ function WritePost({ close, value }) {
     formData.append("audienceType", postForm.audienceType);
 
     dispatch(addPost(formData));
-    console.log(postForm, "qwerty");
   };
 
   if (!userData) {

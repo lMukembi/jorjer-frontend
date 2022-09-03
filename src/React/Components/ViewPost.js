@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Redirect } from "react-router";
+import { useHistory } from "react-router";
 import "../Css/ViewPost.css";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useParams } from "react-router-dom";
@@ -26,13 +26,17 @@ function ViewPost() {
   const history = useHistory();
 
   const [toggleMoreOptions, setToggleMoreOptions] = useState(false);
-  const userInfo = localStorage.getItem("userAccount");
-  const userData = JSON.parse(userInfo);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-  useEffect(() => dispatch(getPost(postId)), [postId]);
+  useEffect(() => {
+    dispatch(getPost(postId));
+
+    if (loading) {
+      return <Loader />;
+    }
+  }, [postId]);
 
   const IconStyles = {
     fontSize: "15px",
@@ -45,10 +49,6 @@ function ViewPost() {
     flexDirection: "row",
     alignItems: "center",
   };
-
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <div>

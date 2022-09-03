@@ -6,7 +6,6 @@ import { SinceInitialTime } from "../Components/SinceInitialTime";
 import { IoChevronBackCircle } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import EditProfile from "../../React/Components/EditProfile";
-import { getUser } from "../../Redux/Queries/Actions/Users";
 import Logout from "../Components/Logout";
 import Avatar from "../Components/Avatar.png";
 import PostCard from "../Components/PostCard";
@@ -35,7 +34,6 @@ function Account() {
   };
 
   useEffect(() => {
-    dispatch(getUser(id));
     dispatch(getUserPosts(id));
   });
 
@@ -45,9 +43,7 @@ function Account() {
 
   const { userPosts } = useSelector((state) => state.UserPosts);
 
-  useEffect(() => {
-    setData(posts);
-  }, [posts]);
+  useEffect(() => setData(posts), [posts]);
 
   if (loading) {
     return <Loader />;

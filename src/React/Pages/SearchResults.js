@@ -8,6 +8,7 @@ import MobileBar from "../Components/MobileBar";
 import PostCard from "../Components/PostCard";
 import TopBar from "../Components/TopBar";
 import Filter from "../Components/Filter.jpg";
+import "../Css/Share.css";
 
 const SearchResults = (search) => {
   const dispatch = useDispatch();
@@ -49,18 +50,7 @@ const SearchResults = (search) => {
 
       {window.innerWidth < 1024 && <MobileBar data={data} setData={setData} />}
 
-      <div
-        style={{
-          zIndex: 1,
-          // position: "relative",
-          // width: "762px",
-          backgroundColor: "white",
-          left: "453px",
-          top: "6rem",
-          borderRadius: "5px",
-          paddingTop: "1rem",
-        }}
-      >
+      <div className="sresults">
         <h3 style={{ color: "black", marginLeft: "0.5rem" }}>
           Posts search result.
         </h3>

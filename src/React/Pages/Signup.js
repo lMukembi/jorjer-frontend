@@ -111,7 +111,7 @@ function AuthForm() {
             <input
               required
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Password (8 or more characters)"
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
