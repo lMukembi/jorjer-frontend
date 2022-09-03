@@ -1,5 +1,5 @@
 .sc {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -11,6 +11,7 @@
   height: 400px;
   width: 99%;
   z-index: 100;
+  overflow-x: scroll;
 }
 
 .sclose {
