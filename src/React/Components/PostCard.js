@@ -14,13 +14,7 @@ function PostCard({ post }) {
   };
 
   return (
-    <Link
-      className="link"
-      to={{
-        pathname: `/posts/${post._id}`,
-        state: { post: post },
-      }}
-    >
+    <Link className="link" to={`/posts/${post._id}`}>
       <div className="post-container">
         <div className="post-image">
           {post.file ? (

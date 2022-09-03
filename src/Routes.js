@@ -7,6 +7,8 @@ import ViewPost from "./React/Components/ViewPost";
 import Home from "./React/Pages/Home";
 import SearchResults from "./React/Pages/SearchResults";
 import PageNotFound from "./React/Pages/PageNotFound";
+import WritePost from "./React/Components/WritePost";
+import PostOptions from "./React/Components/PostOptions";
 
 const Paths = () => {
   return (
@@ -15,6 +17,8 @@ const Paths = () => {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/create" component={WritePost} />
+        <Route path="/choose" component={PostOptions} />
         <Route path="/account/:id" component={Account} />
         <Route path="/posts/:postId" component={ViewPost} />
         <Route path="/search/searchPost" component={SearchResults} />

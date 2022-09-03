@@ -64,6 +64,7 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch({ type: ADD_POST_SUCCESS, payload: data });
     window.location.reload(false);
+    window.location.href = "/";
   } catch (error) {
     console.log(error);
   }

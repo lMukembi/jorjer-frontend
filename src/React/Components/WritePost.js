@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Css/Category.css";
 import "../Css/Share.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Avatar from "../Components/Avatar.png";
 import { addPost } from "../../Redux/Queries/Actions/Posts";
@@ -205,8 +205,12 @@ const audience = [
   { name: "contacts" },
 ];
 
-function WritePost({ close, value }) {
+function WritePost(props) {
   const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const { value } = props.location.state;
 
   const userData = JSON.parse(localStorage.getItem("userAccount"));
 
@@ -300,7 +304,7 @@ function WritePost({ close, value }) {
 
               <span>
                 <AiFillCloseCircle
-                  onClick={() => close(false)}
+                  onClick={() => history.goBack()}
                   style={{
                     color: "rgb(55, 136, 184)",
                     cursor: "pointer",
@@ -459,7 +463,6 @@ function WritePost({ close, value }) {
           </div>
         </form>
       </div>
-      <div className="sclose" onClick={() => close(false)} />
     </div>
   );
 }

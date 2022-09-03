@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Css/PostOptions.css";
-import WritePost from "../Components/WritePost";
 import { IoBagAdd } from "react-icons/io5";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { SiSellfy } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const PostOptions = (props) => {
-  const [addJob, setAddJob] = useState(false);
-  const [sellAccount, setSellAccount] = useState(false);
-  const [monetizeAccount, setMonetizeAccount] = useState(false);
-
   return (
     <div>
       <div className="pstsc">
@@ -40,7 +36,13 @@ const PostOptions = (props) => {
           >
             Select post to create
           </p>
-          <>
+          <Link
+            to={{
+              pathname: "/create",
+              state: { value: "Get Job" },
+            }}
+            className="link"
+          >
             <li
               style={{
                 display: "flex",
@@ -48,23 +50,27 @@ const PostOptions = (props) => {
                 marginBottom: "1rem",
                 marginTop: "1rem",
               }}
-              onClick={() => setAddJob(true)}
             >
               <IoBagAdd
                 style={{ color: "blue", fontSize: "20px", marginLeft: "1rem" }}
               />
               <span style={{ marginLeft: "5px" }}>Add job</span>
             </li>
-            {addJob && <WritePost value="Get Job" close={setAddJob} />}
-          </>
-          <>
+          </Link>
+          <Link
+            to={{
+              pathname: "/create",
+              state: { value: "On Sale" },
+            }}
+            className="link"
+          >
             <li
               style={{
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "1rem",
+                listStyleType: "none",
               }}
-              onClick={() => setSellAccount(true)}
             >
               <SiSellfy
                 style={{
@@ -75,18 +81,21 @@ const PostOptions = (props) => {
               />
               <span style={{ marginLeft: "5px" }}>Sell account</span>
             </li>
-            {sellAccount && (
-              <WritePost value="On Sale" close={setSellAccount} />
-            )}
-          </>
-          <>
+          </Link>
+          <Link
+            to={{
+              pathname: "/create",
+              state: { value: "Hire Me" },
+            }}
+            className="link"
+          >
             <li
               style={{
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "1rem",
+                listStyleType: "none",
               }}
-              onClick={() => setMonetizeAccount(true)}
             >
               <GiTakeMyMoney
                 style={{ color: "green", fontSize: "20px", marginLeft: "1rem" }}
@@ -94,10 +103,7 @@ const PostOptions = (props) => {
 
               <span style={{ marginLeft: "5px" }}>Make Money</span>
             </li>
-            {monetizeAccount && (
-              <WritePost value="Hire Me" close={setMonetizeAccount} />
-            )}
-          </>
+          </Link>
         </ul>
       </div>
       <div className="pclose" onClick={() => props.close()} />
