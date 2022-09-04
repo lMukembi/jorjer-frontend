@@ -156,7 +156,7 @@ const TopBar = ({ platformFilter }) => {
                           height: "24px",
                           borderRadius: "50%",
                         }}
-                        src={userInfo.result.avatar}
+                        src={`https://drive.google.com/uc?export=view&id=${userInfo.result.avatar}`}
                         alt={userInfo.result.username}
                       />
                     ) : (

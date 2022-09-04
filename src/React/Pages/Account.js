@@ -45,7 +45,7 @@ function Account() {
 
   useEffect(() => setData(posts), [posts]);
 
-  console.log(userData.result.avatar, "avatar");
+  console.log(userData.result, "avatar");
 
   if (loading) {
     return <Loader />;
