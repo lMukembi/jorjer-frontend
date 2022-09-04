@@ -45,6 +45,8 @@ function Account() {
 
   useEffect(() => setData(posts), [posts]);
 
+  console.log(userData.result.avatar, "avatar");
+
   if (loading) {
     return <Loader />;
   }
@@ -118,7 +120,7 @@ function Account() {
                   {userData.result.avatar ? (
                     <img
                       className="avatar"
-                      src={userData.result.avatar}
+                      src={`https://drive.google.com/uc?export=view&id=${userData.result.avatar}`}
                       alt={userData.result.username}
                     />
                   ) : (

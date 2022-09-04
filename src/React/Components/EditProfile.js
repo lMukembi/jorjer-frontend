@@ -15,21 +15,17 @@ function EditProfile(props) {
 
   const userData = JSON.parse(localStorage.getItem("userAccount"));
 
-  const [editForm, setEditForm] = useState({
-    username: "",
-    bio: "",
-    phone: "",
-    email: "",
-  });
-
-  const onChange = (val) => setEditForm({ ...editForm, file: val.name });
+  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
 
   const [postImage, setPostImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
   const onChangeImage = async (e) => {
     setPostImage(e.target.files[0]);
-    onChange(e.target.files[0]);
+    setImageUrl(e.target.files[0].name);
   };
 
   useEffect(() => {
@@ -46,10 +42,10 @@ function EditProfile(props) {
     const formData = new FormData();
 
     formData.append("postImage", postImage);
-    formData.append("username", editForm.username);
-    formData.append("email", editForm.email);
-    formData.append("phone", editForm.phone);
-    formData.append("bio", editForm.bio);
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("bio", bio);
 
     const headers = {
       "Content-Type": "application/json",
@@ -73,12 +69,20 @@ function EditProfile(props) {
   };
 
   useEffect(() => {
-    setEditForm({});
+    setUsername(token.result.username);
+    setEmail(token.result.email);
+    setPhone(token.result.phone);
+    setBio(token.result.bio);
   }, []);
 
   return (
     <div>
-      <form className="edit-profile">
+      <form
+        className="edit-profile"
+        action="/"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <p className="margin-bottom">
           <IoCloseCircle
             className="close-button"
@@ -176,34 +180,32 @@ function EditProfile(props) {
 
         <input
           type="text"
-          name="name"
+          name="username"
           className="editInput"
-          value={token.result.username}
+          value={username}
           placeholder="Username"
           autoComplete="off"
-          onChange={(e) =>
-            setEditForm({ ...editForm, username: e.target.value })
-          }
+          onChange={(e) => setUsername(e.target.value)}
         />
 
         <input
           type="text"
-          name="name"
+          name="email"
           className="editInput"
-          value={token.result.email}
+          value={email}
           placeholder="Email"
           autoComplete="off"
-          onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="text"
-          name="name"
+          name="phone"
           className="editInput"
-          value={token.result.phone}
+          value={phone}
           placeholder="phone"
           autoComplete="off"
-          onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
+          onChange={(e) => setPhone(e.target.value)}
         />
 
         <textarea
@@ -212,8 +214,8 @@ function EditProfile(props) {
           type="text"
           name="bio"
           placeholder="Describe yourself here..."
-          value={token.result.bio}
-          onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
         ></textarea>
 
         <button className="editButton" onClick={(e) => updateUser(e)}>

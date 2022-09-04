@@ -23,6 +23,9 @@ function ViewPost() {
   const { postId } = useParams();
   const { post, loading } = useSelector((state) => state.Posts);
 
+  const userInfo = localStorage.getItem("userAccount");
+  const userData = JSON.parse(userInfo);
+
   const history = useHistory();
 
   const [toggleMoreOptions, setToggleMoreOptions] = useState(false);
@@ -100,7 +103,7 @@ function ViewPost() {
                   cursor: "pointer",
                 }}
               >
-                {post.authorId && (
+                {post.authorId === userData.result._id && (
                   <>
                     <HiOutlineDotsVertical
                       onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
@@ -134,7 +137,7 @@ function ViewPost() {
                           borderRadius: "50%",
                           marginRight: "0.5rem",
                         }}
-                        src={post.avatar}
+                        src={`https://drive.google.com/uc?export=view&id=${post.avatar}`}
                         alt={post.author}
                       />
                     ) : (

@@ -31,7 +31,11 @@ function PostCard({ post }) {
         <div className="post-details">
           <p className="pst-user">
             {post.avatar ? (
-              <img className="pc-avatar" src={post.avatar} alt={post.author} />
+              <img
+                className="pc-avatar"
+                src={`https://drive.google.com/uc?export=view&id=${post.avatar}`}
+                alt={post.author}
+              />
             ) : (
               <img className="pc-avatar" src={Avatar} alt={post.author} />
             )}
