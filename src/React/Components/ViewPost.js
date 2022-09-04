@@ -103,7 +103,7 @@ function ViewPost() {
                   cursor: "pointer",
                 }}
               >
-                {post.authorId === userData.result._id && (
+                {userData !== null && post.authorId === userData.result._id && (
                   <>
                     <HiOutlineDotsVertical
                       onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
