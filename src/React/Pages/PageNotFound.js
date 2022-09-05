@@ -37,7 +37,7 @@ const PageNotFound = () => {
           }}
         />
         <small style={{ padding: "0.5em", color: "rgb(55, 135, 185)" }}>
-          OR
+          Want to
         </small>
         <hr
           style={{

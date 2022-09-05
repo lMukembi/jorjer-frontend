@@ -57,8 +57,6 @@
 
 @media screen and (min-width: 1200px) {
   .home-feeds {
-    width: 770px;
-    margin: 8rem auto auto 447.5px;
     position: relative;
   }
 }

@@ -8,7 +8,7 @@ import MobileBar from "../Components/MobileBar";
 import PostCard from "../Components/PostCard";
 import TopBar from "../Components/TopBar";
 import Filter from "../Components/Filter.jpg";
-import "../Css/Share.css";
+import "../Css/Search.css";
 
 const SearchResults = (search) => {
   const dispatch = useDispatch();
@@ -33,6 +33,10 @@ const SearchResults = (search) => {
   useEffect(() => {
     setData(posts);
   }, [posts]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   if (loading) {
     return <Loader />;

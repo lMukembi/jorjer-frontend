@@ -3,11 +3,13 @@ import "../Css/Category.css";
 import "../Css/Share.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Redirect, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../Components/Avatar.png";
 import { addPost } from "../../Redux/Queries/Actions/Posts";
 import SelectOption from "../Components/SelectOption";
 import { BsImages } from "react-icons/bs";
+import TopBar from "./TopBar";
+import DesktopSidebar from "./DesktopSidebar";
 
 const categories = [
   { name: "Home and Office" },
@@ -231,6 +233,16 @@ function WritePost(props) {
   const [postImage, setPostImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
+  const { posts } = useSelector((state) => state.Posts);
+  const [data, setData] = useState([]);
+
+  const platformFilter = (platItem) => {
+    const items = posts.filter((carItem) => {
+      return carItem.platform === platItem;
+    });
+    setData(items);
+  };
+
   const submitImage = async (e) => {
     setPostImage(e.target.files[0]);
     setImageUrl(e.target.files[0].name);
@@ -241,6 +253,8 @@ function WritePost(props) {
       setImageUrl(URL.createObjectURL(postImage));
     }
   }, [postImage]);
+
+  useEffect(() => setData(posts), [posts]);
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
@@ -264,6 +278,11 @@ function WritePost(props) {
   return (
     <div>
       <div className="sc">
+        <TopBar platformFilter={platformFilter} />
+
+        {window.outerWidth > 1023 && (
+          <DesktopSidebar data={data} setData={setData} />
+        )}
         <form
           autoComplete="off"
           action="/"
@@ -279,10 +298,10 @@ function WritePost(props) {
                   <img
                     style={{
                       width: "28px",
-                      height: "284px",
+                      height: "28px",
                       borderRadius: "50%",
                     }}
-                    src={userData.result.avatar}
+                    src={`https://drive.google.com/uc?export=view&id=${userData.result.avatar}`}
                     alt={userData.result.username}
                   />
                 ) : (

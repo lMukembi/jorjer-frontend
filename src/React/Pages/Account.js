@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
 import "../Css/Account.css";
 import { SinceInitialTime } from "../Components/SinceInitialTime";
 import { IoChevronBackCircle } from "react-icons/io5";
@@ -17,6 +17,7 @@ import Loader from "../Components/Loader";
 function Account() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const { id } = useParams();
   const [toggleEditProfile, setToggleEditProfile] = useState(false);
   const [logout, setLogout] = useState(false);
@@ -35,7 +36,7 @@ function Account() {
 
   useEffect(() => {
     dispatch(getUserPosts(id));
-  });
+  }, [location.key]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,8 +45,6 @@ function Account() {
   const { userPosts } = useSelector((state) => state.UserPosts);
 
   useEffect(() => setData(posts), [posts]);
-
-  console.log(userData.result, "avatar");
 
   if (loading) {
     return <Loader />;

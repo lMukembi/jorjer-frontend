@@ -4,10 +4,9 @@ import "../Css/Home.css";
 import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
-import { AiOutlinePlus } from "react-icons/ai";
 import ShareOptions from "./ShareOptions";
 import Avatar from "../Components/Avatar.png";
-import Jorjer from "../Components/Jorjer.jpg";
+import Jorjer from "../Components/Jorjer.png";
 
 const Icon_Styles = {
   fontSize: "24px",
@@ -38,7 +37,7 @@ const TopBar = ({ platformFilter }) => {
     const container = document.getElementById("container");
     let scrollCompleted = 0;
     const slideVar = setInterval(function () {
-      if (direction == "left") {
+      if (direction === "left") {
         container.scrollLeft -= 10;
       } else {
         container.scrollLeft += 10;
@@ -112,20 +111,14 @@ const TopBar = ({ platformFilter }) => {
                 backgroundColor: "rgb(55, 135, 185)",
                 paddingLeft: "2rem",
                 paddingRight: "2rem",
-                paddingTop: "0.2rem",
-                paddingBottom: "0.2rem",
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
                 borderRadius: "5rem",
                 cursor: "pointer",
               }}
               onClick={() => setTogglePostOptions(!togglePostOptions)}
             >
-              <AiOutlinePlus
-                style={{
-                  fontSize: "25px",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}
-              />
+              Post
             </button>
           )}
 

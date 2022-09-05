@@ -1,9 +1,6 @@
 .sc {
   position: absolute;
-  bottom: 2rem;
-  margin: auto;
-  right: 0;
-  left: 0;
+  margin: 7rem 0rem auto 0rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   background-color: white;
@@ -13,6 +10,12 @@
   width: 99%;
   z-index: 100;
   overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sc::-webkit-scrollbar {
+  display: none;
 }
 
 .sclose {

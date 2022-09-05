@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Css/ShareOptions.css";
-import WritePost from "../Components/WritePost";
 import { IoBagAdd } from "react-icons/io5";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { SiSellfy } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const ShareOptions = (props) => {
-  const [addJob, setAddJob] = useState(false);
-  const [sellAccount, setSellAccount] = useState(false);
-  const [monetizeAccount, setMonetizeAccount] = useState(false);
-
   return (
     <div>
       <ul className="ss">
@@ -22,51 +18,49 @@ const ShareOptions = (props) => {
           />
         </p>
         <h2>Select post to create</h2>
-        <li
-          style={{ display: "flex", alignItems: "center" }}
-          onClick={() => setMonetizeAccount(!monetizeAccount)}
+        <Link
+          to={{
+            pathname: "/create",
+            state: { value: "Hire Me" },
+          }}
+          className="link"
         >
-          <GiTakeMyMoney style={{ color: "green", fontSize: "20px" }} />
+          <li style={{ display: "flex", alignItems: "center" }}>
+            <GiTakeMyMoney style={{ color: "green", fontSize: "20px" }} />
 
-          <span style={{ marginLeft: "5px" }}>Make Money</span>
-        </li>
-        {monetizeAccount && (
-          <WritePost
-            value="Hire Me"
-            monetizeAccount={monetizeAccount}
-            close={setMonetizeAccount}
-          />
-        )}
+            <span style={{ marginLeft: "5px" }}>Make Money</span>
+          </li>
+        </Link>
 
-        <li
-          style={{ display: "flex", alignItems: "center" }}
-          onClick={() => setSellAccount(!sellAccount)}
+        <Link
+          to={{
+            pathname: "/create",
+            state: { value: "On Sale" },
+          }}
+          className="link"
         >
-          <SiSellfy style={{ color: "#FF9900", fontSize: "20px" }} />
+          <li style={{ display: "flex", alignItems: "center" }}>
+            <SiSellfy style={{ color: "#FF9900", fontSize: "20px" }} />
 
-          <span style={{ marginLeft: "5px" }}>Sell Account</span>
-        </li>
-        {sellAccount && (
-          <WritePost
-            value="On Sale"
-            sellAccount={sellAccount}
-            close={setSellAccount}
-          />
-        )}
+            <span style={{ marginLeft: "5px" }}>Sell Account</span>
+          </li>
+        </Link>
 
-        <li
-          style={{ display: "flex", alignItems: "center" }}
-          onClick={() => setAddJob(!addJob)}
+        <Link
+          to={{
+            pathname: "/create",
+            state: { value: "Get Job" },
+          }}
+          className="link"
         >
-          <IoBagAdd style={{ color: "blue", fontSize: "20px" }} />
+          <li style={{ display: "flex", alignItems: "center" }}>
+            <IoBagAdd style={{ color: "blue", fontSize: "20px" }} />
 
-          <span style={{ marginLeft: "5px" }}>Add Job</span>
-        </li>
-        {addJob && (
-          <WritePost value="Get Job" addJob={addJob} close={setAddJob} />
-        )}
+            <span style={{ marginLeft: "5px" }}>Add Job</span>
+          </li>
+        </Link>
       </ul>
-      <div className="form-close" onClick={() => props.close(false)} />
+      <div className="sclose" onClick={() => props.close()} />
     </div>
   );
 };
