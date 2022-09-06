@@ -36,22 +36,11 @@ const PageNotFound = () => {
             backgroundColor: "rgb(94, 91, 91)",
           }}
         />
-        <small style={{ padding: "0.5em", color: "rgb(55, 135, 185)" }}>
-          Want to
-        </small>
-        <hr
-          style={{
-            flex: "auto",
-            border: "none",
-            height: "1px",
-            backgroundColor: "rgb(94, 91, 91)",
-          }}
-        />
       </div>
       <Link
         style={{
           padding: "0.5rem",
-          backgroundColor: "rgb(55, 136, 184)",
+          backgroundColor: "rgb(55, 135, 185)",
           borderRadius: "5px",
           cursor: "pointer",
           textDecoration: "none",

@@ -103,8 +103,6 @@ function Home() {
               <p>No posts available!</p>
               <div className="or">
                 <hr />
-                <small>Want to</small>
-                <hr />
               </div>
               <button
                 style={{
