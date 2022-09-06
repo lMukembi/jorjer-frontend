@@ -216,6 +216,8 @@ function ViewPost() {
                       style={{
                         margin: "auto",
                         display: "flex",
+                        paddingTop: "0.5rem",
+                        paddingBottom: "0.5rem",
                       }}
                     >
                       <li>
@@ -236,6 +238,8 @@ function ViewPost() {
                       style={{
                         margin: "auto",
                         display: "flex",
+                        paddingTop: "0.5rem",
+                        paddingBottom: "0.5rem",
                       }}
                     >
                       <li>
