@@ -137,6 +137,7 @@ function ViewPost() {
                           height: "24px",
                           borderRadius: "50%",
                           marginRight: "0.5rem",
+                          objectFit: "cover",
                         }}
                         src={`https://drive.google.com/uc?export=view&id=${post.avatar}`}
                         alt={post.author}
@@ -211,23 +212,39 @@ function ViewPost() {
                 <div className="pd">
                   <h4>Contact {post.author} using these details.</h4>
                   <p className="pde">
-                    <MdEmail style={{ marginRight: "5px", color: "black" }} />
-                    {post.email}
+                    <ul
+                      style={{
+                        margin: "auto",
+                        display: "flex",
+                      }}
+                    >
+                      <li>
+                        <MdEmail
+                          style={{ marginRight: "5px", color: "black" }}
+                        />
+                      </li>
+                      <li>{post.email}</li>
+                    </ul>
                   </p>
                   <p
                     style={{
                       backgroundColor: "rgb(55, 135, 185)",
-                      color: "white",
                       display: "flex",
-                      flexDirection: "row",
-                      paddingTop: "0.3rem",
-                      paddingBottom: "0.3rem",
-                      paddingLeft: "6rem",
-                      paddingRight: "6rem",
                     }}
                   >
-                    <IoCall style={{ marginRight: "5px", color: "black" }} />
-                    {post.phone}
+                    <ul
+                      style={{
+                        margin: "auto",
+                        display: "flex",
+                      }}
+                    >
+                      <li>
+                        <IoCall
+                          style={{ marginRight: "5px", color: "black" }}
+                        />
+                      </li>
+                      <li>{post.phone}</li>
+                    </ul>
                   </p>
                   <h4>Check this notice!</h4>
                   <ol className="notice">

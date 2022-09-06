@@ -72,6 +72,7 @@ p span {
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.3);
   margin-right: 0.7rem;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 1024px) {

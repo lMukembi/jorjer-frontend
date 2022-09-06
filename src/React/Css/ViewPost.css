@@ -78,12 +78,18 @@
 
 .pd .pde {
   color: rgb(55, 135, 185);
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  display: flex;
+  
+}
+
+.emailicon {
+  margin: auto;
   display: flex;
   flex-direction: row;
+}
+
+.emailicon li{
+  align-items: center;
 }
 
 .bc p {

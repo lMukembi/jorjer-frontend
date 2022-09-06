@@ -69,6 +69,7 @@ function EditProfile(props) {
   };
 
   useEffect(() => {
+    setImageUrl(token.result.avatar);
     setUsername(token.result.username);
     setEmail(token.result.email);
     setPhone(token.result.phone);
@@ -115,7 +116,10 @@ function EditProfile(props) {
           <p style={{ left: "8rem", bottom: "1rem" }}>
             <span style={{ display: "flex" }}>
               <>
-                {imageUrl && postImage ? (
+                {token !== null &&
+                imageUrl &&
+                postImage &&
+                token.result.avatar ? (
                   <>
                     <img
                       src={imageUrl}
@@ -172,7 +176,7 @@ function EditProfile(props) {
                     marginRight: "5px",
                   }}
                 />
-                Change profile image
+                Change
               </label>
             </p>
           </p>

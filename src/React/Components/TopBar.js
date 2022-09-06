@@ -148,6 +148,7 @@ const TopBar = ({ platformFilter }) => {
                           width: "24px",
                           height: "24px",
                           borderRadius: "50%",
+                          objectFit: "cover",
                         }}
                         src={`https://drive.google.com/uc?export=view&id=${userInfo.result.avatar}`}
                         alt={userInfo.result.username}
