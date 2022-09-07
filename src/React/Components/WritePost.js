@@ -269,6 +269,8 @@ function WritePost(props) {
     formData.append("audienceType", postForm.audienceType);
 
     dispatch(addPost(formData));
+
+    history.goBack();
   };
 
   if (!userData) {

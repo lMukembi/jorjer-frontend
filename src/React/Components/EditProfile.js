@@ -31,6 +31,8 @@ function EditProfile(props) {
   useEffect(() => {
     if (postImage) {
       setImageUrl(URL.createObjectURL(postImage));
+    } else if (token.result.avatar) {
+      setImageUrl(token.result.avatar);
     }
   }, [postImage]);
 
@@ -116,10 +118,7 @@ function EditProfile(props) {
           <p style={{ left: "8rem", bottom: "1rem" }}>
             <span style={{ display: "flex" }}>
               <>
-                {token !== null &&
-                imageUrl &&
-                postImage &&
-                token.result.avatar ? (
+                {imageUrl ? (
                   <>
                     <img
                       src={imageUrl}

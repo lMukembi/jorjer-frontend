@@ -86,7 +86,6 @@ const TopBar = ({ platformFilter }) => {
             />
           </span>
           <span style={{ fontSize: "24px" }}>Jorjer</span>
-          <sup style={{ marginLeft: "0.1rem", fontSize: "8px" }}>KE</sup>
         </li>
         <li className="search">
           <input
