@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { SinceInitialTime } from "../Components/SinceInitialTime";
+import moment from "moment";
 
 const MsgList = () => {
   const { messages } = useSelector((state) => state.Message);
@@ -16,7 +16,7 @@ const MsgList = () => {
               <li>{message.content}</li>
             </ul>
           </p>
-          <span>{SinceInitialTime(message.createdAt)}</span>
+          <span>{moment(post.createdAt).fromNow()}</span>
         </div>
       ))}
     </div>

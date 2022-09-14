@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
 import "../Css/Account.css";
-import { SinceInitialTime } from "../Components/SinceInitialTime";
+import moment from "moment";
 import { IoChevronBackCircle } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import EditProfile from "../../React/Components/EditProfile";
@@ -13,6 +13,7 @@ import { getUserPosts } from "../../Redux/Queries/Actions/Posts";
 import TopBar from "../Components/TopBar";
 import DesktopSidebar from "../Components/DesktopSidebar";
 import Loader from "../Components/Loader";
+import { getUser } from "../../Redux/Queries/Actions/Auth";
 
 function Account() {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ function Account() {
   const [toggleEditProfile, setToggleEditProfile] = useState(false);
   const [logout, setLogout] = useState(false);
   const userInfo = localStorage.getItem("userAccount");
-  const userData = JSON.parse(userInfo);
+  const userData1 = JSON.parse(userInfo);
 
   const { posts, loading } = useSelector((state) => state.Posts);
+  const { userData } = useSelector((state) => state.Users);
+
   const [data, setData] = useState([]);
 
   const platformFilter = (platItem) => {
@@ -36,6 +39,7 @@ function Account() {
 
   useEffect(() => {
     dispatch(getUserPosts(id));
+    dispatch(getUser(userData1.result._id));
   }, [location.key]);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ function Account() {
   }
 
   if (!userData) {
-    return <Redirect to="/auth-form" />;
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -109,30 +113,28 @@ function Account() {
             </div>
             <div>
               <ul
-                className=" user-bar"
+                className="user-bar"
                 style={{
                   display: "flex",
                   flexDirection: "row",
                 }}
               >
                 <li>
-                  {userData.result.avatar ? (
+                  {userData.avatar ? (
                     <img
                       className="avatar"
-                      src={`https://drive.google.com/uc?export=view&id=${userData.result.avatar}`}
-                      alt={userData.result.username}
+                      src={`https://drive.google.com/uc?export=view&id=${userData.avatar}`}
+                      alt={userData.username}
                     />
                   ) : (
                     <img
                       className="avatar"
                       src={Avatar}
-                      alt={userData.result.username}
+                      alt={userData.username}
                     />
                   )}
                 </li>
-                <li style={{ marginLeft: "1rem" }}>
-                  {userData.result.username}
-                </li>
+                <li style={{ marginLeft: "1rem" }}>{userData.username}</li>
                 <li style={{ marginRight: "0.2rem", marginLeft: "auto" }}>
                   {userData && (
                     <div>
@@ -172,7 +174,7 @@ function Account() {
               </ul>
             </div>
             <div className="uad">
-              <p>{userData.result.bio}</p>
+              <p>{userData.bio}</p>
 
               <p
                 style={{
@@ -181,7 +183,7 @@ function Account() {
                 }}
               >
                 <span>Joined</span>
-                <span>{SinceInitialTime(userData.result.createdAt)} ago</span>
+                <span>{moment(userData.createdAt).format("ll")}</span>
               </p>
             </div>
           </div>

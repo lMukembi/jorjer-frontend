@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Css/TopBar.css";
 import "../Css/Home.css";
 import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
@@ -7,6 +7,9 @@ import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 import ShareOptions from "./ShareOptions";
 import Avatar from "../Components/Avatar.png";
 import Jorjer from "../Components/Jorjer.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../Redux/Queries/Actions/Auth";
+import Loader from "./Loader";
 
 const Icon_Styles = {
   fontSize: "24px",
@@ -23,6 +26,8 @@ function useQuery() {
 }
 
 const TopBar = ({ platformFilter }) => {
+  const dispatch = useDispatch();
+
   const query = useQuery();
   const q = query.get("q");
   const history = useHistory();
@@ -30,8 +35,16 @@ const TopBar = ({ platformFilter }) => {
   const [togglePostOptions, setTogglePostOptions] = useState(false);
   const [search, setSearch] = useState("");
 
-  const data = localStorage.getItem("userAccount");
-  const userInfo = JSON.parse(data);
+  const userInfo = localStorage.getItem("userAccount");
+  const userData1 = JSON.parse(userInfo);
+
+  const { userData } = useSelector((state) => state.Users);
+
+  useEffect(() => {
+    if (userData1 && userData1 !== null) {
+      dispatch(getUser(userData1.result._id));
+    }
+  }, []);
 
   function slide(direction) {
     const container = document.getElementById("container");
@@ -76,16 +89,29 @@ const TopBar = ({ platformFilter }) => {
       >
         <li className="lga">
           <span>
-            <img
-              style={{
-                width: "25px",
-                height: "25px",
-                marginLeft: "0.5rem",
-              }}
-              src={Jorjer}
-            />
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <img
+                style={{
+                  width: "25px",
+                  height: "25px",
+                  marginLeft: "0.5rem",
+                }}
+                src={Jorjer}
+              />
+            </Link>
           </span>
-          <span style={{ fontSize: "24px" }}>Jorjer</span>
+          <span>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                fontSize: "24px",
+                color: "black",
+              }}
+            >
+              Jorjer
+            </Link>
+          </span>
         </li>
         <li className="search">
           <input
@@ -126,11 +152,11 @@ const TopBar = ({ platformFilter }) => {
           )}
         </li>
 
-        {userInfo ? (
+        {userData ? (
           <>
             <li>
               <NavLink
-                to={`/account/${userInfo.result._id}`}
+                to={`/account/${userData._id}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <div
@@ -141,7 +167,7 @@ const TopBar = ({ platformFilter }) => {
                   }}
                 >
                   <span className="av">
-                    {userInfo.result.avatar ? (
+                    {userData.avatar ? (
                       <img
                         style={{
                           width: "24px",
@@ -149,8 +175,8 @@ const TopBar = ({ platformFilter }) => {
                           borderRadius: "50%",
                           objectFit: "cover",
                         }}
-                        src={`https://drive.google.com/uc?export=view&id=${userInfo.result.avatar}`}
-                        alt={userInfo.result.username}
+                        src={`https://drive.google.com/uc?export=view&id=${userData.avatar}`}
+                        alt={userData.username}
                       />
                     ) : (
                       <img
@@ -160,17 +186,10 @@ const TopBar = ({ platformFilter }) => {
                           borderRadius: "50%",
                         }}
                         src={Avatar}
-                        alt={userInfo.result.username}
+                        alt={userData.username}
                       />
                     )}
                   </span>
-                  {window.innerWidth > 1023 && (
-                    <span style={{ marginLeft: "0.5rem" }}>
-                      {userInfo.result.username.length > 6
-                        ? userInfo.result.username.substring(0, 6) + "..."
-                        : userInfo.result.username}
-                    </span>
-                  )}
                 </div>
               </NavLink>
             </li>

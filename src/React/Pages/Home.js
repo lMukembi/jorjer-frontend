@@ -31,12 +31,14 @@ function Home() {
     let randomItem = Texts[Math.floor(Math.random() * Texts.length)];
     setRandomText(randomItem);
   }, []);
-
   useEffect(() => {
     dispatch(getPosts());
+  }, [location.key]);
+
+  useEffect(() => {
     let text = setInterval(changeText, 2000);
     return () => clearInterval(text);
-  }, [location.key, changeText]);
+  }, [changeText]);
 
   useEffect(() => {
     setData(posts);

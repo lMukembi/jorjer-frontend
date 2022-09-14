@@ -1,17 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SinceInitialTime } from "./SinceInitialTime";
 import { BsGrid } from "react-icons/bs";
 import { CgMediaLive } from "react-icons/cg";
 import { IoIosPeople } from "react-icons/io";
 import Avatar from "../Components/Avatar.png";
-import JORJER from "../Components/JORJER.png";
+import jorjercover from "../Components/jorjercover.png";
 import "../Css/PostCard.css";
+import moment from "moment";
 
 function PostCard({ post }) {
   const flexline = {
     display: "flex",
   };
+
+  // const postAuthor = (userid)=> {
+  //   users.filter((item) =>{
+  //      if ( item.id === userid){
+  //          console.log(item.name)
+  //          return item.name
+  //      }
+  //   })
+  //  }
 
   return (
     <Link className="link" to={`/posts/${post._id}`}>
@@ -24,28 +33,36 @@ function PostCard({ post }) {
               style={{ borderRadius: "10px" }}
             />
           ) : (
-            <img style={{ borderRadius: "10px" }} src={JORJER} />
+            <img style={{ borderRadius: "10px" }} src={jorjercover} />
           )}
         </div>
 
         <div className="post-details">
           <p className="pst-user">
-            {post.avatar ? (
+            {post.authorId.avatar ? (
               <img
                 className="pc-avatar"
-                src={`https://drive.google.com/uc?export=view&id=${post.avatar}`}
-                alt={post.author}
+                src={`https://drive.google.com/uc?export=view&id=${post.authorId.avatar}`}
+                alt={post.authorId.username}
               />
             ) : (
-              <img className="pc-avatar" src={Avatar} alt={post.author} />
+              <img
+                className="pc-avatar"
+                src={Avatar}
+                alt={post.authorId.username}
+              />
             )}
-            <span>
-              {post && post.author.length > 10
-                ? post.author.substring(0, 10) + "..."
-                : post.author}
-            </span>
-            <span>•</span>
-            <span>{SinceInitialTime(post.createdAt)}</span>
+            <ul>
+              <li>
+                {post && post.authorId.username.length > 10
+                  ? post.authorId.username.substring(0, 10) + "..."
+                  : post.authorId.username}
+              </li>
+
+              <li style={{ color: "rgb(55, 135, 185)", fontSize: "11px" }}>
+                {moment(post.createdAt).fromNow()}
+              </li>
+            </ul>
           </p>
 
           <div className="pstds">

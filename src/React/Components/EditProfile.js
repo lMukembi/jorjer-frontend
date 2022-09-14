@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import "../Css/EditProfile.css";
 import { BsImages } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import Avatar from "../Components/Avatar.png";
 import { EDIT_USER } from "../../Redux/Queries/Constants/Users";
 import axios from "axios";
 
+const hostUrl = "http://localhost:4000";
+const hostUrlApi = "https://jorjer.herokuapp.com";
+
 function EditProfile(props) {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
 
-  const userData = JSON.parse(localStorage.getItem("userAccount"));
+  const { userData } = useSelector((state) => state.Users);
 
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
@@ -31,8 +34,10 @@ function EditProfile(props) {
   useEffect(() => {
     if (postImage) {
       setImageUrl(URL.createObjectURL(postImage));
-    } else if (token.result.avatar) {
-      setImageUrl(token.result.avatar);
+    } else {
+      setImageUrl(
+        `https://drive.google.com/uc?export=view&id=${userData.avatar}`
+      );
     }
   }, [postImage]);
 
@@ -59,23 +64,26 @@ function EditProfile(props) {
     };
     try {
       const { data } = await axios.put(
-        `https://jorjer.herokuapp.com/api/auth/editUser/${id}`,
+        `${hostUrl}/api/auth/editUser/${id}`,
         formData,
         config
       );
 
       dispatch({ type: EDIT_USER, payload: data });
+      history.goBack();
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    setImageUrl(token.result.avatar);
-    setUsername(token.result.username);
-    setEmail(token.result.email);
-    setPhone(token.result.phone);
-    setBio(token.result.bio);
+    setImageUrl(userData.avatar);
+    setUsername(userData.username);
+    setEmail(userData.email);
+    setPhone(userData.phone);
+    if (userData.bio !== undefined) {
+      setBio(userData.bio);
+    }
   }, []);
 
   return (
@@ -118,29 +126,17 @@ function EditProfile(props) {
           <p style={{ left: "8rem", bottom: "1rem" }}>
             <span style={{ display: "flex" }}>
               <>
-                {imageUrl ? (
-                  <>
-                    <img
-                      src={imageUrl}
-                      alt={userData.result.username}
-                      style={{
-                        marginLeft: "10px",
-                        borderRadius: "50%",
-                        height: "50px",
-                        width: "50px",
-                      }}
-                    />
-
-                    <small>
-                      <AiFillCloseCircle
-                        onClick={() => setPostImage(!postImage)}
-                        style={{
-                          color: "rgb(55, 135, 185)",
-                          cursor: "pointer",
-                        }}
-                      />
-                    </small>
-                  </>
+                {postImage !== null || imageUrl === null ? (
+                  <img
+                    src={imageUrl}
+                    alt={userData.username}
+                    style={{
+                      marginLeft: "10px",
+                      borderRadius: "50%",
+                      height: "50px",
+                      width: "50px",
+                    }}
+                  />
                 ) : (
                   <img
                     style={{
@@ -149,8 +145,12 @@ function EditProfile(props) {
                       height: "50px",
                       width: "50px",
                     }}
-                    src={Avatar}
-                    alt={userData.result.username}
+                    src={
+                      userData.avatar
+                        ? `https://drive.google.com/uc?export=view&id=${userData.avatar}`
+                        : Avatar
+                    }
+                    alt={userData.username}
                   />
                 )}
               </>

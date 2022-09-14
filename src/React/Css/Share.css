@@ -45,7 +45,28 @@
   padding: 5px;
   outline: none;
   border-radius: 5px;
+  margin-top: 2rem;
   width: 99%;
+}
+
+.progressbar{
+	position: relative;
+	overflow: hidden;
+	width: 350px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #eee;
+}
+
+.progressPercent{
+	font-weight: 600;
+	font-family:'Franklin Gothic Medium';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	color: #eee;
+	text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
 }
 
 @media screen and (min-width: 1200px) {
@@ -116,16 +137,6 @@
 
   .sfc .ips span {
     margin-top: 2rem;
-  }
-
-  .sfc .ips .fa p {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .sfc .ips .fa p h6 {
-    margin-bottom: 0;
   }
 
   .sfc .ips textarea {

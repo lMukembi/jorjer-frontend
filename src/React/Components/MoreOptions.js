@@ -11,13 +11,13 @@ const Icon_Styles = {
   color: "#514b4b",
 };
 
-const MoreOptions = ({ post, close }) => {
+const MoreOptions = ({ postId, close }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const Delete = () => {
-    if (post._id) {
-      dispatch(deletePost(post._id));
+    if (postId) {
+      dispatch(deletePost(postId));
     }
     history.goBack();
   };

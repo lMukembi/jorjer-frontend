@@ -9,11 +9,12 @@ import {
 
 import axios from "axios";
 
+const hostUrlApi = "http://localhost:4000";
+const hostUrl = "https://jorjer.herokuapp.com";
+
 export const getPosts = () => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      "https://jorjer.herokuapp.com/api/post/getPosts"
-    );
+    const { data } = await axios.get(`${hostUrl}/api/post/getPosts`);
 
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
@@ -23,9 +24,7 @@ export const getPosts = () => async (dispatch) => {
 
 export const getUserPosts = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      `https://jorjer.herokuapp.com/api/post/getUserPosts/${id}`
-    );
+    const { data } = await axios.get(`${hostUrl}/api/post/getUserPosts/${id}`);
     dispatch({ type: GET_USER_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error.message);
@@ -34,9 +33,7 @@ export const getUserPosts = (id) => async (dispatch) => {
 
 export const getPost = (postId) => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      `https://jorjer.herokuapp.com/api/post/getPost/${postId}`
-    );
+    const { data } = await axios.get(`${hostUrl}/api/post/getPost/${postId}`);
 
     dispatch({ type: GET_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -49,7 +46,9 @@ export const addPost = (formData) => async (dispatch) => {
   const token = JSON.parse(data);
 
   const headers = {
+    "Content-Type": "application/json",
     Authorization: `Bearer ${token.data}`,
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
   };
   const config = {
     headers: headers,
@@ -57,16 +56,23 @@ export const addPost = (formData) => async (dispatch) => {
 
   try {
     const { data } = await axios.post(
-      "https://jorjer.herokuapp.com/api/post/addPost",
+      `${hostUrl}/api/post/addPost`,
       formData,
       config
     );
 
     dispatch({ type: ADD_POST_SUCCESS, payload: data });
-    window.location.reload(false);
-    window.location.href = "/";
+
+    if (data) {
+      window.location.reload(false);
+      window.location.href = "/";
+      alert("Your post submitted successfully.");
+    }
   } catch (error) {
     console.log(error);
+    if (error) {
+      alert("Could not submit post successfully.");
+    }
   }
 };
 
@@ -77,13 +83,14 @@ export const updatePost = (id, post) => async (dispatch) => {
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token.data}`,
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
   };
   const config = {
     headers: headers,
   };
   try {
     const { data } = await axios.get(
-      `https://jorjer.herokuapp.com/api/post/updatePost/${id}`,
+      `${hostUrl}/api/post/updatePost/${id}`,
       config,
       post
     );
@@ -101,16 +108,14 @@ export const deletePost = (id) => async (dispatch) => {
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token.data}`,
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
   };
 
   const config = {
     headers: headers,
   };
   try {
-    await axios.delete(
-      `https://jorjer.herokuapp.com/api/post/deletePost/${id}`,
-      config
-    );
+    await axios.delete(`${hostUrl}/api/post/deletePost/${id}`, config);
 
     dispatch({ type: DELETE_POST_SUCCESS, payload: id });
     window.location.reload(false);

@@ -75,16 +75,17 @@ const categories = [
   { name: "Power and Lighting" },
 ];
 
-const platforms = [
-  { name: "Twitter" },
-  { name: "Facebook" },
-  { name: "Instagram" },
-  { name: "TikTok" },
-  { name: "YouTube" },
-  { name: "WhatsApp" },
-  { name: "Telegram" },
-  { name: "Snapchat" },
-  { name: "Pinterest" },
+let platforms = [
+  { name: "Twitter", audienceType: "followers" },
+  { name: "Facebook", audienceType: "page likes" },
+  { name: "Instagram", audienceType: "followers" },
+  { name: "TikTok", audienceType: "followers" },
+  { name: "YouTube", audienceType: "subscribers" },
+  { name: "WhatsApp", audienceType: "contacts" },
+  { name: "Telegram", audienceType: "subscribers" },
+  { name: "Snapchat", audienceType: "followers" },
+  { name: "Pinterest", audienceType: "followers" },
+  { name: "Quora", audienceType: "followers" },
 ];
 
 const followersRange = [
@@ -200,13 +201,6 @@ const followersRange = [
   { name: "950.1m - 1.0b" },
 ];
 
-const audience = [
-  { name: "followers" },
-  { name: "subscribers" },
-  { name: "page likes" },
-  { name: "contacts" },
-];
-
 function WritePost(props) {
   const dispatch = useDispatch();
 
@@ -219,7 +213,6 @@ function WritePost(props) {
   const categoryType = true;
   const platformType = true;
   const followersNo = true;
-  const audienceType = true;
 
   const [postForm, setPostForm] = useState({
     category: "",
@@ -302,6 +295,7 @@ function WritePost(props) {
                       width: "28px",
                       height: "28px",
                       borderRadius: "50%",
+                      objectFit: "contain",
                     }}
                     src={`https://drive.google.com/uc?export=view&id=${userData.result.avatar}`}
                     alt={userData.result.username}
@@ -357,14 +351,21 @@ function WritePost(props) {
                     value={postForm.platform}
                     prompt="Select platform ..."
                     onChange={(val) =>
-                      setPostForm({ ...postForm, platform: val })
+                      setPostForm({
+                        ...postForm,
+                        platform: val,
+                        audienceType: platforms.filter(
+                          (platform) =>
+                            platform.name == val && platform.audienceType
+                        )[0].audienceType,
+                      })
                     }
                     categories={platforms}
                   />
                 )}
               </span>
 
-              <span className="fa">
+              <span>
                 <p>
                   <h6>
                     {followersNo && (
@@ -379,19 +380,6 @@ function WritePost(props) {
                           })
                         }
                         categories={followersRange}
-                      />
-                    )}
-                  </h6>
-                  <h6>
-                    {audienceType && (
-                      <SelectOption
-                        style={{ cursor: "pointer" }}
-                        value={postForm.audienceType}
-                        prompt="Choose audience type ..."
-                        onChange={(val) =>
-                          setPostForm({ ...postForm, audienceType: val })
-                        }
-                        categories={audience}
                       />
                     )}
                   </h6>

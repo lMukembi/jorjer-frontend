@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "../Css/ViewPost.css";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useParams } from "react-router-dom";
-import { SinceInitialTime } from "./SinceInitialTime";
+import moment from "moment";
 import { getPost } from "../../Redux/Queries/Actions/Posts";
 import MoreOptions from "./MoreOptions";
 import { BsGrid } from "react-icons/bs";
@@ -13,7 +13,7 @@ import { IoIosPeople } from "react-icons/io";
 import { IoChevronBackCircle, IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import Avatar from "../Components/Avatar.png";
-import JORJER from "../Components/JORJER.png";
+import jorjercover from "../Components/jorjercover.png";
 import Loader from "./Loader";
 import DesktopSidebar from "./DesktopSidebar";
 import TopBar from "./TopBar";
@@ -36,11 +36,11 @@ function ViewPost() {
 
   useEffect(() => {
     dispatch(getPost(postId));
+  }, []);
 
-    if (loading) {
-      return <Loader />;
-    }
-  }, [postId]);
+  if (loading) {
+    return <Loader />;
+  }
 
   const IconStyles = {
     fontSize: "15px",
@@ -95,7 +95,7 @@ function ViewPost() {
                 />
                 Go Back
               </span>
-              {post.author}'s post
+              {post.authorId.username}'s post
               <span
                 style={{
                   right: "10px",
@@ -104,17 +104,18 @@ function ViewPost() {
                   cursor: "pointer",
                 }}
               >
-                {userData !== null && post.authorId === userData.result._id && (
-                  <>
-                    <HiOutlineDotsVertical
-                      onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
-                      style={IconStyles}
-                    />
-                  </>
-                )}
+                {userData !== null &&
+                  post.authorId._id === userData.result._id && (
+                    <>
+                      <HiOutlineDotsVertical
+                        onClick={() => setToggleMoreOptions(!toggleMoreOptions)}
+                        style={IconStyles}
+                      />
+                    </>
+                  )}
               </span>
               {toggleMoreOptions && (
-                <MoreOptions close={setToggleMoreOptions} post={post} />
+                <MoreOptions close={setToggleMoreOptions} postId={post._id} />
               )}
             </h3>
             <div className="pcontainer">
@@ -122,15 +123,19 @@ function ViewPost() {
                 {post.file ? (
                   <img
                     src={`https://drive.google.com/uc?export=view&id=${post.file}`}
-                    alt={post.author}
+                    alt={post.authorId.username}
                     className="vpimage"
                   />
                 ) : (
-                  <img className="vpimage" alt={post.author} src={JORJER} />
+                  <img
+                    className="vpimage"
+                    alt={post.authorId.username}
+                    src={jorjercover}
+                  />
                 )}
                 <div className="pdetails">
                   <p className="puser">
-                    {post.avatar ? (
+                    {post.authorId.avatar ? (
                       <img
                         style={{
                           width: "24px",
@@ -139,8 +144,8 @@ function ViewPost() {
                           marginRight: "0.5rem",
                           objectFit: "cover",
                         }}
-                        src={`https://drive.google.com/uc?export=view&id=${post.avatar}`}
-                        alt={post.author}
+                        src={`https://drive.google.com/uc?export=view&id=${post.authorId.avatar}`}
+                        alt={post.authorId.username}
                       />
                     ) : (
                       <img
@@ -151,16 +156,20 @@ function ViewPost() {
                           marginRight: "0.5rem",
                         }}
                         src={Avatar}
-                        alt={post.author}
+                        alt={post.authorId.username}
                       />
                     )}
                     <span>
-                      {post && post.author.length > 10
-                        ? post.author.substring(0, 10) + "..."
-                        : post.author}
+                      {post && post.authorId.username.length > 10
+                        ? post.authorId.username.substring(0, 10) + "..."
+                        : post.authorId.username}
                     </span>
                     <span>•</span>
-                    <span>{SinceInitialTime(post.createdAt)}</span>
+                    <span
+                      style={{ color: "rgb(55, 135, 185)", fontSize: "11px" }}
+                    >
+                      {moment(post.createdAt).fromNow()}
+                    </span>
                   </p>
                   <div className="pstds">
                     <p style={flexline}>
@@ -225,7 +234,7 @@ function ViewPost() {
                           style={{ marginRight: "5px", color: "black" }}
                         />
                       </li>
-                      <li>{post.email}</li>
+                      <li>{post.authorId.email}</li>
                     </ul>
                   </p>
                   <p
@@ -247,12 +256,17 @@ function ViewPost() {
                           style={{ marginRight: "5px", color: "black" }}
                         />
                       </li>
-                      <li>{post.phone}</li>
+                      <li>{post.authorId.phone}</li>
                     </ul>
                   </p>
                   <h4>Check this notice!</h4>
                   <ol className="notice">
                     <li>Review the social media account up to satisfaction.</li>
+                    <li>Make sure the social media account exists.</li>
+                    <li>
+                      Make sure followers, suscribers, page likes, views, and
+                      contacts are real.
+                    </li>
                     <li>Be careful of scammers.</li>
                     <li>Never pay in advance.</li>
                   </ol>
