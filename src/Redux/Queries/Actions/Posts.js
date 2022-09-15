@@ -13,8 +13,17 @@ const hostUrlApi = "http://localhost:4000";
 const hostUrl = "https://jorjer.herokuapp.com";
 
 export const getPosts = () => async (dispatch) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
+  };
+
+  const config = {
+    headers: headers,
+  };
+
   try {
-    const { data } = await axios.get(`${hostUrl}/api/post/getPosts`);
+    const { data } = await axios.get(`${hostUrl}/api/post/getPosts`, config);
 
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
@@ -23,8 +32,20 @@ export const getPosts = () => async (dispatch) => {
 };
 
 export const getUserPosts = (id) => async (dispatch) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
+  };
+
+  const config = {
+    headers: headers,
+  };
+
   try {
-    const { data } = await axios.get(`${hostUrl}/api/post/getUserPosts/${id}`);
+    const { data } = await axios.get(
+      `${hostUrl}/api/post/getUserPosts/${id}`,
+      config
+    );
     dispatch({ type: GET_USER_POSTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error.message);
@@ -32,8 +53,20 @@ export const getUserPosts = (id) => async (dispatch) => {
 };
 
 export const getPost = (postId) => async (dispatch) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
+  };
+
+  const config = {
+    headers: headers,
+  };
+
   try {
-    const { data } = await axios.get(`${hostUrl}/api/post/getPost/${postId}`);
+    const { data } = await axios.get(
+      `${hostUrl}/api/post/getPost/${postId}`,
+      config
+    );
 
     dispatch({ type: GET_POST_SUCCESS, payload: data });
   } catch (error) {

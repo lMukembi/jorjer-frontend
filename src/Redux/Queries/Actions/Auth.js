@@ -13,13 +13,26 @@ const hostUrl = "https://jorjer.herokuapp.com";
 
 // Signup User
 export const signup = (formData) => async (dispatch) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
+  };
+
+  const config = {
+    headers: headers,
+  };
+
   try {
-    const { data } = await axios.post(`${hostUrl}/api/user/signup`, {
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-      phone: formData.phone,
-    });
+    const { data } = await axios.post(
+      `${hostUrl}/api/user/signup`,
+      {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+      },
+      config
+    );
 
     dispatch({ type: SIGNUP_SUCCESS, payload: data });
 
@@ -39,11 +52,24 @@ export const signup = (formData) => async (dispatch) => {
 
 // Login User
 export const login = (formData) => async (dispatch) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://www.jorjer.com",
+  };
+
+  const config = {
+    headers: headers,
+  };
+
   try {
-    const { data } = await axios.post(`${hostUrl}/api/user/login`, {
-      email: formData.email,
-      password: formData.password,
-    });
+    const { data } = await axios.post(
+      `${hostUrl}/api/user/login`,
+      {
+        email: formData.email,
+        password: formData.password,
+      },
+      config
+    );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data });
 
