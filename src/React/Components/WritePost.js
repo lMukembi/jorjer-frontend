@@ -208,7 +208,7 @@ function WritePost(props) {
 
   const { value } = props.location.state;
 
-  const userData = JSON.parse(localStorage.getItem("userAccount"));
+  const { userData } = useSelector((state) => state.Users);
 
   const categoryType = true;
   const platformType = true;
@@ -289,7 +289,7 @@ function WritePost(props) {
           <div className="sfc">
             <p className="ac">
               <span>
-                {userData.result.avatar ? (
+                {userData.avatar ? (
                   <img
                     style={{
                       width: "28px",
@@ -297,8 +297,8 @@ function WritePost(props) {
                       borderRadius: "50%",
                       objectFit: "contain",
                     }}
-                    src={`https://drive.google.com/uc?export=view&id=${userData.result.avatar}`}
-                    alt={userData.result.username}
+                    src={`https://drive.google.com/uc?export=view&id=${userData.avatar}`}
+                    alt={userData.username}
                   />
                 ) : (
                   <img
@@ -308,7 +308,7 @@ function WritePost(props) {
                       borderRadius: "50%",
                     }}
                     src={Avatar}
-                    alt={userData.result.username}
+                    alt={userData.username}
                   />
                 )}
               </span>
