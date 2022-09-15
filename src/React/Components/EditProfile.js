@@ -70,9 +70,17 @@ function EditProfile(props) {
       );
 
       dispatch({ type: EDIT_USER, payload: data });
+
+      if (data) {
+        alert("Your profile updated successfully.");
+      }
+
       history.goBack();
     } catch (error) {
       console.log(error);
+      if (error) {
+        alert("Could not update profile.");
+      }
     }
   };
 
