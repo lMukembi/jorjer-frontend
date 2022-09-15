@@ -8,8 +8,8 @@ import Avatar from "../Components/Avatar.png";
 import { EDIT_USER } from "../../Redux/Queries/Constants/Users";
 import axios from "axios";
 
-const hostUrl = "http://localhost:4000";
-const hostUrlApi = "https://jorjer.herokuapp.com";
+const hostUrlApi = "http://localhost:4000";
+const hostUrl = "https://jorjer.herokuapp.com";
 
 function EditProfile(props) {
   const dispatch = useDispatch();

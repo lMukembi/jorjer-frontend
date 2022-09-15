@@ -219,7 +219,7 @@ function ViewPost() {
               </div>
               <div className="bc">
                 <div className="pd">
-                  <h4>Contact {post.author} using these details.</h4>
+                  <h4>Contact {post.authorId.username} using these details.</h4>
                   <p className="pde">
                     <ul
                       style={{
