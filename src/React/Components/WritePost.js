@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../Components/Avatar.png";
 import { addPost } from "../../Redux/Queries/Actions/Posts";
 import SelectOption from "../Components/SelectOption";
-import { BsImages } from "react-icons/bs";
+import { BsImages, BsLinkedin } from "react-icons/bs";
 import TopBar from "./TopBar";
 import DesktopSidebar from "./DesktopSidebar";
 
@@ -82,7 +82,8 @@ let platforms = [
   { name: "TikTok", audienceType: "followers" },
   { name: "YouTube", audienceType: "subscribers" },
   { name: "WhatsApp", audienceType: "contacts" },
-  { name: "Telegram", audienceType: "subscribers" },
+  { name: "Linkedin", audienceType: "followers" },
+  { name: "Telegram", audienceType: "contacts" },
   { name: "Snapchat", audienceType: "followers" },
   { name: "Pinterest", audienceType: "followers" },
   { name: "Quora", audienceType: "followers" },
@@ -209,7 +210,6 @@ function WritePost(props) {
   const { value } = props.location.state;
 
   const { userData } = useSelector((state) => state.Users);
-  console.log(userData.avatar);
 
   const categoryType = true;
   const platformType = true;
