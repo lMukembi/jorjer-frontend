@@ -57,11 +57,13 @@ function EditProfile(props) {
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token.data}`,
+      "Access-Control-Allow-Origin": "https://www.jorjer.com",
     };
 
     const config = {
       headers: headers,
     };
+    
     try {
       const { data } = await axios.put(
         `${hostUrl}/api/auth/editUser/${id}`,
