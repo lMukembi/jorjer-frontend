@@ -7,7 +7,7 @@
   background-color: white;
   border-radius: 10px;
   padding: 0.4rem;
-  width: 380px;
+  width: 99%;
   z-index: 6;
   transition: all 0.2s ease;
 }
@@ -49,7 +49,7 @@
 .vpimage {
   border-radius: 10px;
   margin-top: 1rem;
-  width: 370px;
+  width: 360px;
   height: 250px;
   object-fit: contain;
 }
@@ -234,6 +234,10 @@ p span {
     flex-direction: row;
     align-items: center;
     display: flex;
+  }
+
+  .pstds {
+    width: 250px;
   }
 
   .pstds p {

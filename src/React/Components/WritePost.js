@@ -209,6 +209,7 @@ function WritePost(props) {
   const { value } = props.location.state;
 
   const { userData } = useSelector((state) => state.Users);
+  console.log(userData.avatar);
 
   const categoryType = true;
   const platformType = true;
