@@ -18,12 +18,12 @@ export const getPosts = () => async (dispatch) => {
     "Access-Control-Allow-Origin": "https://www.jorjer.com",
   };
 
-  const config = {
-    headers: headers,
-  };
+
 
   try {
-    const { data } = await axios.get(`${hostUrl}/api/post/getPosts`, config);
+    const { data } = await axios.get(`${hostUrl}/api/post/getPosts`, {
+      headers: headers,
+    });
 
     dispatch({ type: GET_POSTS_SUCCESS, payload: data });
   } catch (error) {
