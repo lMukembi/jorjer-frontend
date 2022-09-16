@@ -270,8 +270,10 @@ const TopBar = ({ platformFilter }) => {
               <li onClick={() => platformFilter("YouTube")}>YouTube</li>
               <li onClick={() => platformFilter("Instagram")}>Instagram</li>
               <li onClick={() => platformFilter("Telegram")}>Telegram</li>
-              <li onClick={() => platformFilter("Quora")}>Quora</li>
+              <li onClick={() => platformFilter("Linkedin")}>Linkedin</li>
               <li onClick={() => platformFilter("Snapchat")}>Snapchat</li>
+              <li onClick={() => platformFilter("Pinterest")}>Pinterest</li>
+              <li onClick={() => platformFilter("Quora")}>Quora</li>
             </ul>
             <button
               type="button"
