@@ -38,7 +38,7 @@ function ViewPost() {
     dispatch(getPost(postId));
   }, []);
 
-  if (loading) {
+  if (loading || !post) {
     return <Loader />;
   }
 
