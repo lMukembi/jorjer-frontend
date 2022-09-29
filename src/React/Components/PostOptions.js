@@ -39,7 +39,7 @@ const PostOptions = (props) => {
           <Link
             to={{
               pathname: "/create",
-              state: { value: "Get Job" },
+              state: { value: "APPLY NOW" },
             }}
             className="link"
           >
@@ -60,7 +60,7 @@ const PostOptions = (props) => {
           <Link
             to={{
               pathname: "/create",
-              state: { value: "On Sale" },
+              state: { value: "BUY NOW" },
             }}
             className="link"
           >
@@ -85,7 +85,7 @@ const PostOptions = (props) => {
           <Link
             to={{
               pathname: "/create",
-              state: { value: "Hire Me" },
+              state: { value: "HIRE ME" },
             }}
             className="link"
           >

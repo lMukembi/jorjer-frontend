@@ -63,7 +63,7 @@ function EditProfile(props) {
     const config = {
       headers: headers,
     };
-    
+
     try {
       const { data } = await axios.put(
         `${hostUrl}/api/auth/editUser/${id}`,

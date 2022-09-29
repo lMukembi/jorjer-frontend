@@ -13,15 +13,6 @@ function PostCard({ post }) {
     display: "flex",
   };
 
-  // const postAuthor = (userid)=> {
-  //   users.filter((item) =>{
-  //      if ( item.id === userid){
-  //          console.log(item.name)
-  //          return item.name
-  //      }
-  //   })
-  //  }
-
   return (
     <Link className="link" to={`/posts/${post._id}`}>
       <div className="post-container">
@@ -30,7 +21,9 @@ function PostCard({ post }) {
             <img
               src={`https://drive.google.com/uc?export=view&id=${post.file}`}
               alt={post.author}
-              style={{ borderRadius: "10px" }}
+              style={{
+                borderRadius: "10px",
+              }}
             />
           ) : (
             <img style={{ borderRadius: "10px" }} src={jorjercover} />
@@ -118,6 +111,7 @@ function PostCard({ post }) {
                     borderRadius: "15px",
                     alignItems: "center",
                     backgroundColor: "rgb(55, 135, 185)",
+                    fontSize: "12px",
                   }}
                 >
                   {post.btnType}
